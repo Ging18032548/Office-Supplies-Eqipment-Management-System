@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webmanagement
+    ports:
+      - "8840:3006"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - management
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql_management
+      PMA_PORT: 3006
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8840:80"
+    depends_on:
+      - office supply
+    networks:
+      - management
+    restart: always
+
+networks:
+  weblab820:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
