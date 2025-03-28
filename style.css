@@ -1,0 +1,55 @@
+/* การตั้งค่าพื้นฐาน */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fc; /* พื้นหลังโทนขาวอ่อน */
+    margin: 0;
+    padding: 0;
+    color: #333333; /* สีข้อความหลัก */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh
+}
+
+/* ส่วนหัว */
+header {
+    background-color: #2c3e50; /* สีเทาเข้มน้ำเงิน */
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงาเรียบหรู */
+}
+
+/* จัดปุ่มเมนู */
+button {
+    background-color: #3498db; /* สีฟ้าสด */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9; /* เปลี่ยนสีฟ้าฉ่ำเมื่อ Hover */
+}
+
+section {
+    margin: 2rem auto;
+    text-align: center;
+}
+
+/* เพิ่มการจัดกล่องปุ่ม */
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* เพิ่มระยะห่างระหว่างปุ่ม */
+    flex-wrap: wrap;
+}
