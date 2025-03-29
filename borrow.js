@@ -69,29 +69,31 @@
 //     fetchBorrowRecords();
 // });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const borrowRecordsBody = document.getElementById("borrow-records-body");
+// borrow.js
+document.addEventListener("DOMContentLoaded", function() {
+    // ดึงข้อมูลจาก API
+    axios.get('get_borrow_records.php')
+        .then(function(response) {
+            const borrowRecords = response.data;
+            const tbody = document.getElementById('borrow-records-body');
+            tbody.innerHTML = ""; // เคลียร์ข้อมูลเก่าออก
 
-    // Fetch borrow records data from API
-    fetch("http://localhost:8880/borrow_records") // URL ของ API ที่ดึงข้อมูล
-        .then(response => response.json()) // เปลี่ยนข้อมูลที่ได้เป็น JSON
-        .then(data => {
-            borrowRecordsBody.innerHTML = ""; // Clear existing records
+            borrowRecords.forEach(function(record) {
+                const row = document.createElement('tr');
 
-            data.forEach(record => {  // วนลูปข้อมูลที่ได้รับมาและแสดงในตาราง
-                const row = document.createElement("tr");
                 row.innerHTML = `
-                    <td>${record.Record_ID}</td>
-                    <td>${record.User_ID}</td>
-                    <td>${record.Equipment_ID}</td>
-                    <td>${record.Borrow_Date}</td>
-                    <td>${record.Return_Date}</td>
-                    <td>${record.Status}</td>
+                    <td>${record.borrow_id}</td>
+                    <td>${record.equipment_id}</td>
+                    <td>${record.user_id}</td>
+                    <td>${record.borrow_date}</td>
+                    <td>${record.return_date}</td>
+                    <td>${record.status}</td>
                 `;
-                borrowRecordsBody.appendChild(row); // เพิ่มแถวใหม่ลงใน tbody
+
+                tbody.appendChild(row);
             });
         })
-        .catch(error => {
-            console.error("Error fetching borrow records:", error); // ถ้ามีข้อผิดพลาดเกิดขึ้น
+        .catch(function(error) {
+            console.error('Error fetching borrow records:', error);
         });
 });
