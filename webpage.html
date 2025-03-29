@@ -8,18 +8,23 @@
 </head>
 <body>
     <header>
-        <h1> Office Supplies & Equipment Management
-
+        <h1>
+            Office Supplies & Equipment Management
         </h1>
         <nav>
-            <button onclick="loadData('equipment')">Equipment</button>
-            <button onclick="loadData('maintenance')">Maintenance</button>
-            <button onclick="loadData('borrow_records')">Borrow Records</button>
-            <button onclick="loadData('user')">User</button>
+            <button onclick="goToPage('equipment.html')">Equipment</button>
+            <button onclick="goToPage('maintenance.html')">Maintenance Records</button>
+            <button onclick="goToPage('borrow.html')">Borrowed Records</button>
+            <button onclick="goToPage('user.html')">User Directory</button>
         </nav>
     </header>
 
+    <script>
+        function goToPage(page) {
+            window.location.href = page; // เปลี่ยนหน้าเว็บไปยังตารางข้อมูล
+        }
+    </script>
+
     
-    <script src="script.js"></script>
 </body>
 </html>

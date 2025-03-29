@@ -35,3 +35,53 @@ document.getElementById('searchButton').addEventListener('click', function() {
         document.getElementById('infoMessage').style.display = 'none';
     }
 });
+
+//path: login.js
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();  // ป้องกันไม่ให้หน้าเว็บรีเฟรช
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    // ตรวจสอบว่า username และ password ไม่ว่าง
+    if (username === "" || password === "") {
+        document.getElementById("errorMessage").textContent = "กรุณากรอกข้อมูลให้ครบถ้วน";
+        return;
+    }
+
+    // สมมติว่า username และ password ถูกต้อง (แทนที่ด้วยการตรวจสอบฐานข้อมูลจริงในภายหลัง)
+    if (username === "admin" && password === "1234") {
+        window.location.href = "webpage.html";  // เปลี่ยนไปยังหน้า webpage.html
+    } else {
+        document.getElementById("errorMessage").textContent = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+    }
+});
+
+
+//path: register.js เชื่อมต่อการสมัครสมาชิก
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // ป้องกันหน้ารีเฟรช
+
+    const fullname = document.getElementById("fullname").value;
+    const email = document.getElementById("email").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMessage = document.getElementById("errorMessage");
+
+    // ตรวจสอบว่ากรอกข้อมูลครบถ้วน
+    if (!fullname || !email || !username || !password || !confirmPassword) {
+        errorMessage.textContent = "กรุณากรอกข้อมูลให้ครบทุกช่อง";
+        return;
+    }
+
+    // ตรวจสอบว่ารหัสผ่านตรงกัน
+    if (password !== confirmPassword) {
+        errorMessage.textContent = "รหัสผ่านไม่ตรงกัน";
+        return;
+    }
+
+    // จำลองการสมัครสำเร็จ และนำไปยังหน้า Welcome
+    localStorage.setItem("registeredUser", JSON.stringify({ fullname, email, username }));
+    window.location.href = "welcome.html"; // เมื่อสมัครเสร็จให้ไปยังหน้า Welcome
+});

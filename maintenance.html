@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Records</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="main-container"></div>
+    <div class="content-box">
+        <a href="webpage.html" class="btn back-home">Back to Homepage</a>
+        <h2>Maintenance Records</h2>
+        
+        <!-- <div class="search-container">
+            <button class="search-button">🔍 Search MaintenanceID</button>
+        </div>
+
+        <button id="addBtn" class="btn add">Add MaintenanceID</button> -->
+
+        <!-- ตัวอย่าง -->
+        <button class="search-button"><i class="fas fa-search"></i>🔍 Search MaintenanceID</button>
+        <button class="btn add"><i class="fas fa-plus-circle"></i> Add MaintenanceID</button>
+
+         <!-- ข้อความแสดงผลหลังค้นหา -->
+         <div id="infoMessage" style="display: none; color: rgb(132, 205, 132); margin-top: 10px;">
+            Information was found!
+        </div>
+
+        <table id="maintenance-table">
+            <thead>
+                <tr>
+                    <th>MaintenanceID</th>
+                    <th>EquipmentID</th>
+                    <th>Maintenance Date</th>
+                    <th>Description</th>
+                    <th>Repair</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody id="maintenance"></tbody>
+        </table>
+    </div>
+        
+</body>
+</html>

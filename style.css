@@ -1,17 +1,16 @@
+/* นำเข้า Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;700&display=swap');
 
 /* รีเซ็ตค่าเริ่มต้น */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+    font-family: 'Poppins','Sukhumvit Set', sans-serif;
 }
 
-/* ตั้งค่าพื้นหลังของหน้า */
 body {
-    font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     text-align: center;
     display: flex;
@@ -23,7 +22,7 @@ body {
 
 /* Header */
 header {
-    background: #007BFF;
+    background: linear-gradient(90deg, #007BFF, #0056b3);
     color: white;
     padding: 20px;
     width: 100%;
@@ -31,8 +30,7 @@ header {
     text-align: center;
 }
 
-/* หัวข้อ */
-h1 {
+header h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 15px;
@@ -45,7 +43,6 @@ nav {
     gap: 15px;
 }
 
-/* ปุ่มเมนู */
 nav button {
     background-color: white;
     color: #007BFF;
@@ -74,7 +71,6 @@ nav button:hover {
     text-align: center;
 }
 
-/* หัวข้อ */
 h2 {
     margin-bottom: 20px;
     color: #333;
@@ -84,10 +80,8 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-
 }
 
-/* ส่วนหัวของตาราง */
 thead {
     background: #7886C7;
     color: white;
@@ -99,92 +93,136 @@ th, td {
     text-align: center;
 }
 
-/* แถวของข้อมูล */
 tbody tr:nth-child(even) {
     background: #f9f9f9;
 }
 
-/* เพิ่มเอฟเฟกต์เมื่อชี้ที่แถว */
 tbody tr:hover {
     background: #e2e6ea;
+    transform: scale(1.02);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* ตัวอย่างการตกแต่งปุ่ม */
+/* ปุ่มทั่วไป */
 button {
-    background-color: #ffffff; /* สีพื้นหลัง */
-    border: 2px solid #1b4f72; /* สีกรอบ */
-    border-radius: 10px; /* มุมปุ่มโค้งมน */
-    color: #2c3e50; /* สีข้อความ */
-    font-family: 'Roboto', sans-serif; /* ฟ้อนต์ข้อความ */
-    font-size: 16px; /* ขนาดฟ้อนต์ */
-    padding: 10px 20px; /* ระยะห่างด้านในปุ่ม */
-    cursor: pointer; /* เปลี่ยนรูปเมาส์เมื่อชี้ */
-    transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์เมื่อโต้ตอบ */
+    background-color: #ffffff;
+    border: 2px solid #1b4f72;
+    border-radius: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
-    background-color: #2c3e50; /* สีพื้นหลังเมื่อเมาส์ชี้ */
-    color: #ffffff; /* สีข้อความเมื่อเมาส์ชี้ */
+    background-color: #2c3e50;
+    color: #ffffff;
 }
 
 /* ปุ่มค้นหา */
 .search-container {
-    margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างปุ่มและตาราง */
-    text-align: center; /* จัดปุ่มให้อยู่กึ่งกลาง */
+    margin-bottom: 20px;
 }
 
 button.search-button {
-    background-color: #d0d3d4; /* สีพื้นหลัง */
-    border: #b3b6b7; /* กำจัดเส้นกรอบ */
-    border-radius: 10px; /* มุมโค้งมน */
-    color: black; /* สีข้อความ */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 15px; /* ขนาดฟ้อนต์ */
-    padding: 10px; /* เพิ่มความใหญ่ของปุ่ม */
-    cursor: pointer; /* รูปเมาส์เปลี่ยนเมื่อชี้ */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* เอฟเฟ็กต์โต้ตอบ */
+    background-color: #d0d3d4;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button.search-button:hover {
-    transform: scale(1.1); /* ขยายปุ่มเมื่อชี้ */
-    background-color: #fcf3cf; /* เปลี่ยนสีเมื่อชี้ */
+    transform: scale(1.1);
+    background-color: #fcf3cf;
 }
 
-.user-directory-button {
-    background-color: #4CAF50; /* สีพื้นหลัง */
-    color: white; /* สีข้อความ */
-    border: none; /* กำจัดกรอบ */
-    border-radius: 10px; /* มุมปุ่มโค้งมน */
-    padding: 10px 20px; /* ระยะห่างด้านใน */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 16px; /* ขนาดข้อความ */
-    cursor: pointer; /* เปลี่ยนรูปเมาส์เมื่อชี้ */
-    transition: background-color 0.3s ease; /* เอฟเฟ็กต์เมื่อชี้ */
+/* ฟอร์มล็อกอิน */
+.login-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
 }
 
-button.user-directory-button:hover {
-    background-color: #45a049; /* เปลี่ยนสีเมื่อชี้ */
+.login-form h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* ปุ่มกลับหน้าแรก */
 .back-home {
-    display: inline-block; /* ทำให้ลิงก์เป็นบล็อกเพื่อกำหนดกรอบได้ง่าย */
-    text-decoration: none; /* ลบขีดเส้นใต้ */
-    padding: 10px 15px; /* ระยะห่างด้านใน */
-    border: 2px solid #979a9a; /* สีกรอบ */
-    border-radius: 15px; /* มุมกรอบโค้งมน */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 16px; /* ขนาดข้อความ */
-    color: #2c3e50; /* สีข้อความ */
-    background-color: #ffffff; /* สีพื้นหลัง */
-    transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์ */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 2px solid #979a9a;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #2c3e50;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-home:hover {
-    background-color: #979a9a; /* เปลี่ยนสีพื้นหลังเมื่อเมาส์ชี้ */
-    color: #ffffff; /* เปลี่ยนสีข้อความเมื่อเมาส์ชี้ */
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* เพิ่มความเข้มของเงา */
+    background-color: #979a9a;
+    color: #ffffff;
 }
 
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
+#infoMessage {
+    font-size: 16px;
+    color: #1abc9c;
+    margin-top: 15px;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
+}

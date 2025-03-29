@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>Equipment Inventory</h1>
+        <button onclick="goBack()">Back to Homepage</button>
+    </header>
+
+    <main>
+        <table id="equipment-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Quantity</th>
+                    <th>Purchase Date</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- ข้อมูลจาก MySQL จะถูกโหลดที่นี่ -->
+            </tbody>
+        </table>
+    </main>
+
+</body>
+<script>
+    function goBack() {
+        window.location.href = "webpage.html"; // กลับไปหน้า homepage
+    }
+</script>
+</html>

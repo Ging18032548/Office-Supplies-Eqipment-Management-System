@@ -1,31 +1,22 @@
-// server.js (Node.js + Express)
 const express = require('express');
-const mysql = require('mysql');
+const cors = require('cors');
+const db = require('./db'); // ไฟล์ที่เชื่อมต่อกับฐานข้อมูล
+
 const app = express();
-const port = 8080;
+app.use(cors()); // เปิดใช้งาน CORS
+app.use(express.json()); // ใช้ JSON parser สำหรับ body
 
-// ตั้งค่าเชื่อมต่อกับฐานข้อมูล MySQL
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'webdb'
+// ดึงข้อมูลจาก borrow_records
+app.get('/borrow_records', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT * FROM borrow_records');
+        res.json(rows); // ส่งข้อมูลในรูปแบบ JSON
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log('Connected to MySQL Database');
-});
-
-// API Endpoint เพื่อดึงข้อมูลจากตาราง 'equipment'
-app.get('/api/equipment', (req, res) => {
-  db.query('SELECT * FROM equipment', (err, results) => {
-    if (err) throw err;
-    res.json(results);
-  });
-});
-
-// เริ่มเซิร์ฟเวอร์
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+// เปิด server บน port 8880
+app.listen(8880, () => {
+    console.log('Server is running on http://localhost:8880');
 });
