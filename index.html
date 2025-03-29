@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container"></div>
+    <div class="content-box">
+        <h2>User Directory</h2>
+        <div class="search-container">
+            <button class="search-button">🔍 Search Username</button>
+        
+        </div>
+             <!-- ปุ่มกลับหน้าหลัก -->
+            <a href="webpage.html">🔙 Back to Homepage</a>
+            <button id="addBtn" class="btn add">Add User</button>
+        
+        <!-- ข้อความแสดงผลหลังค้นหา -->
+        <div id="infoMessage" style="display: none; color: rgb(132, 205, 132); margin-top: 10px;">
+            Information was found!
+        </div>
+        
+        <table id="user-table">
+            <thead>
+                <tr>
+                    <th>User_ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="user"></tbody>
+        </table>
+    </div>
+
+    <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
+    <div id="message" class="message"></div>
+
+    <!-- ป๊อปอัปยืนยันการลบ
+    <div id="popup" class="popup hidden">
+        <p class="popup-header">Confirmation</p>
+        <p class="popup-message">Are you sure you want to delete this data?</p>
+        <div class="popup-buttons">
+            <button id="confirmBtn" class="btn confirm">Confirm</button>
+            <button id="cancelBtn" class="btn cancel">Cancel</button>
+        </div>
+    </div> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="user.js"></script>
+    <script src="script.js"></script>
+    <script src="user.js"></script>
+</body>
+</html>
