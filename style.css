@@ -1,15 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
 
-/* ตั้งค่าทั่วไป */
+/* รีเซ็ตค่าเริ่มต้น */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+}
+
+/* ตั้งค่าพื้นหลังของหน้า */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    background: #007BFF;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* หัวข้อ */
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Navigation Bar */
+nav {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap: 15px;
+}
+
+/* ปุ่มเมนู */
+nav button {
+    background-color: white;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+    color: white;
+    border-color: #0056b3;
 }
 
 /* กล่องเนื้อหา */
@@ -32,7 +84,7 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+
 }
 
 /* ส่วนหัวของตาราง */
@@ -61,7 +113,7 @@ tbody tr:hover {
 button {
     background-color: #ffffff; /* สีพื้นหลัง */
     border: 2px solid #1b4f72; /* สีกรอบ */
-    border-radius: 8px; /* มุมปุ่มโค้งมน */
+    border-radius: 10px; /* มุมปุ่มโค้งมน */
     color: #2c3e50; /* สีข้อความ */
     font-family: 'Roboto', sans-serif; /* ฟ้อนต์ข้อความ */
     font-size: 16px; /* ขนาดฟ้อนต์ */
@@ -83,8 +135,8 @@ button:hover {
 
 button.search-button {
     background-color: #d0d3d4; /* สีพื้นหลัง */
-    border: none; /* กำจัดเส้นกรอบ */
-    border-radius: 12px; /* มุมโค้งมน */
+    border: #b3b6b7; /* กำจัดเส้นกรอบ */
+    border-radius: 10px; /* มุมโค้งมน */
     color: black; /* สีข้อความ */
     font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
     font-size: 15px; /* ขนาดฟ้อนต์ */
@@ -98,4 +150,41 @@ button.search-button:hover {
     transform: scale(1.1); /* ขยายปุ่มเมื่อชี้ */
     background-color: #fcf3cf; /* เปลี่ยนสีเมื่อชี้ */
 }
+
+.user-directory-button {
+    background-color: #4CAF50; /* สีพื้นหลัง */
+    color: white; /* สีข้อความ */
+    border: none; /* กำจัดกรอบ */
+    border-radius: 10px; /* มุมปุ่มโค้งมน */
+    padding: 10px 20px; /* ระยะห่างด้านใน */
+    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
+    font-size: 16px; /* ขนาดข้อความ */
+    cursor: pointer; /* เปลี่ยนรูปเมาส์เมื่อชี้ */
+    transition: background-color 0.3s ease; /* เอฟเฟ็กต์เมื่อชี้ */
+}
+
+button.user-directory-button:hover {
+    background-color: #45a049; /* เปลี่ยนสีเมื่อชี้ */
+}
+
+.back-home {
+    display: inline-block; /* ทำให้ลิงก์เป็นบล็อกเพื่อกำหนดกรอบได้ง่าย */
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    padding: 10px 15px; /* ระยะห่างด้านใน */
+    border: 2px solid #979a9a; /* สีกรอบ */
+    border-radius: 15px; /* มุมกรอบโค้งมน */
+    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
+    font-size: 16px; /* ขนาดข้อความ */
+    color: #2c3e50; /* สีข้อความ */
+    background-color: #ffffff; /* สีพื้นหลัง */
+    transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์ */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+
+.back-home:hover {
+    background-color: #979a9a; /* เปลี่ยนสีพื้นหลังเมื่อเมาส์ชี้ */
+    color: #ffffff; /* เปลี่ยนสีข้อความเมื่อเมาส์ชี้ */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* เพิ่มความเข้มของเงา */
+}
+
 
