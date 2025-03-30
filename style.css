@@ -22,64 +22,7 @@ body {
     height: 100vh;
 }
 
-.login-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    padding: 20px;
-    text-align: center;
-}
 
-.login-form h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    font-size: 14px;
-    color: #333;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #007BFF;
-    outline: none;
-}
-
-button.login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button.login-button:hover {
-    background-color: #0056b3;
-}
-
-.error-message {
-    color: red;
-    margin-top: 10px;
-}
 /* Header */
 header {
     background: linear-gradient(90deg, #007BFF, #0056b3); /* ใช้ Gradient */
@@ -180,6 +123,8 @@ button {
     padding: 10px 20px; /* ระยะห่างด้านในปุ่ม */
     cursor: pointer; /* เปลี่ยนรูปเมาส์เมื่อชี้ */
     transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์เมื่อโต้ตอบ */
+    margin: 0px auto;
+    margin-top: 20px; /* ระยะห่างด้านบน */
 }
 
 button:hover {
@@ -187,30 +132,34 @@ button:hover {
     color: #ffffff; /* สีข้อความเมื่อเมาส์ชี้ */
 }
 
-/* ปุ่มค้นหา */
+/* ปุ่มค้นหา 🔍 */
 .search-container {
+    margin-top: 20px; /* ระยะห่างด้านบน */
     margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างปุ่มและตาราง */
     text-align: center; /* จัดปุ่มให้อยู่กึ่งกลาง */
 }
 
-button.search-button {
-    background-color: #eeeeee; /* สีพื้นหลัง */
-    border: #b3b6b7; /* กำจัดเส้นกรอบ */
-    border-radius: 10px; /* มุมโค้งมน */
-    color: black; /* สีข้อความ */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 15px; /* ขนาดฟ้อนต์ */
-    padding: 10px; /* เพิ่มความใหญ่ของปุ่ม */
-    cursor: pointer; /* รูปเมาส์เปลี่ยนเมื่อชี้ */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* เอฟเฟ็กต์โต้ตอบ */
+.search-box {
+    margin-top: 20px; /* ระยะห่างด้านบน */
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 15px auto;
+    margin-top: 30px;
+    display: block;
+    font-size: 16px;
+    border: 2px solid #E5D9F2;
+    border-radius: 20px;
+    text-align: absolute;
+    outline: none;
 }
 
-button.search-button:hover {
-    transform: scale(1.1); /* ขยายปุ่มเมื่อชี้ */
-    background-color: #fcf3cf; /* เปลี่ยนสีเมื่อชี้ */
+.search-box:focus {
+    border-color: #B5A8D5;
+    box-shadow: 0px 0px 5px rgba(142, 68, 173, 0.5);
 }
 
+/* กล่องค้นหา */
 .user-directory-button {
     background-color: #4CAF50; /* สีพื้นหลัง */
     color: white; /* สีข้อความ */
@@ -279,19 +228,6 @@ input {
     transform: scale(1.05);
 }
 
-header h1 {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-header h2 {
-    font-size: 18px;
-    color: #7f8c8d;
-    margin-bottom: 30px;
-}
-
-
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -318,7 +254,6 @@ header h2 {
     border-color: #3498db;
 }
 
-
 .register-container {
     background-color: #ffffff;
     padding: 40px;
@@ -327,20 +262,6 @@ header h2 {
     max-width: 450px;
     width: 90%;
     text-align: center;
-}
-
-
-header h1 {
-    font-size: 28px; /* Modern font size */
-    color: #2c3e50; /* Deep blue */
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for luxury look */
-}
-
-header h2 {
-    font-size: 20px;
-    color: #7f8c8d;
-    margin-bottom: 30px;
 }
 
 .input-group {
@@ -382,23 +303,7 @@ header h2 {
     text-decoration: underline;
 }
 
-.back-home {
-    display: inline-block; /* ทำให้ลิงก์เป็นบล็อกเพื่อกำหนดกรอบได้ง่าย */
-    text-decoration: none; /* ลบขีดเส้นใต้ */
-    padding: 10px 15px; /* ระยะห่างด้านใน */
-    border: 2px solid #979a9a; /* สีกรอบ */
-    border-radius: 15px; /* มุมกรอบโค้งมน */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 16px; /* ขนาดข้อความ */
-    color: #2c3e50; /* สีข้อความ */
-    background-color: #ffffff; /* สีพื้นหลัง */
-    transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์ */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
-}
-.back-home:hover {
-    background-color: #9e9e9e; 
-    transform: scale(1.03); /* Slight enlargement for interactivity */
-}
+
 button.add {
     background-color: white; /* Original blue */
     color: black;
@@ -486,7 +391,6 @@ header h2 {
     transform: scale(1.03);
 }
 
-
 .register-link {
     font-size: 14px;
     color: #7f8c8d;
@@ -501,6 +405,177 @@ header h2 {
 
 .register-link a:hover {
     text-decoration: underline;
+}
+
+/* equipment btn */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #979a9a;
+    transition: background-color 0.3s;
+}
+/* mouse point */
+a:hover {
+    background-color: #d6eaf8;
+}
+
+/* maintain button */
+.main-container {
+    text-align: center;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #2196F3;
+}
+
+.add {
+    background-color: #4CAF50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+/*  */
+.login-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.login-form h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.login-button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+/* ปุ่ม Back to Homepage */
+.back-home {
+    display: inline-block; /* ทำให้ลิงก์เป็นบล็อกเพื่อกำหนดกรอบได้ง่าย */
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    padding: 10px 15px; /* ระยะห่างด้านใน */
+    border: 2px solid #979a9a; /* สีกรอบ */
+    border-radius: 15px; /* มุมกรอบโค้งมน */
+    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
+    font-size: 16px; /* ขนาดข้อความ */
+    color: #2c3e50; /* สีข้อความ */
+    background-color: #ffffff; /* สีพื้นหลัง */
+    transition: background-color 0.3s ease, color 0.3s ease; /* เอฟเฟ็กต์ */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+
+.back-home:hover {
+    background-color: #444;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+button.add {
+    background-color: white;
+    color: black;
+    border: 2px solid #979a9a;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.add:hover {
+    background-color: #9e9e9e;
+    transform: scale(1.03);
 }
 @keyframes fadeIn {
     from {

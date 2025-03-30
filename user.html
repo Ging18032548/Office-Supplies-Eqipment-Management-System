@@ -11,20 +11,21 @@
     <div class="content-box">
         <a href="webpage.html" class="btn back-home">Back to Homepage</a>
         <h2>User Directory</h2>
-        
-        <div class="search-container">
-            <!-- <input type="text" id="searchInput" placeholder="🔍 Search"> -->
-            <button class="search-button" onclick="searchUser()">🔍 Search</button>
-        </div>
-        
+    
         <button id="addBtn" class="btn add">Add User</button>
         
         <!-- ข้อความแสดงผลหลังค้นหา -->
         <div id="infoMessage" style="display: none; color: rgb(132, 205, 132); margin-top: 10px;">
             Information was found!
         </div>
+
+        <!-- delete edit -->
+        <button class="edit-btn" data-id="${user.id}">Edit</button>
+        <button class="delete-btn" data-id="${user.id}">Delete</button>
         
-        <table id="user-table">
+        <input type="text" id="search" class="search-box" placeholder="🔍 search">
+
+        <table id="user">
             <thead>
                 <tr>
                     <th>User_ID</th>
@@ -38,89 +39,14 @@
                     <th>Role</th>
                 </tr>
             </thead>
-            </tbody>
-        </table>
-            <tbody id="user"></tbody>
+            <tbody id="user-body"></tbody>
         </table>
     </div>
 
-    <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
-    <div id="message" class="message"></div>
+     <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
+     <div id="message" class="message"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script src="user.js"></script>
-    <script src="script.js"></script>
-
-    <script>
-        // Function to load user data from the database
-        function loadUserData() {
-            axios.get('http://localhost:8080/index.php?route=/sql&pos=0&db=webdb&table=user')
-                .then(response => {
-                    const users = response.data;
-                    const userTableBody = document.getElementById('user');
-
-                    // Clear previous rows
-                    userTableBody.innerHTML = '';
-
-                    // Check if there is any data
-                    if (users.length > 0) {
-                        users.forEach(user => {
-                            const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>${user.User_ID}</td>
-                                <td>${user.Username}</td>
-                                <td>${user.Password}</td>
-                                <td>${user.Firstname}</td>
-                                <td>${user.Lastname}</td>
-                                <td>${user.Email}</td>
-                                <td>${user.Phone}</td>
-                                <td>${user.Department}</td>
-                                <td>${user.Role}</td>
-                            `;
-                            userTableBody.appendChild(row);
-                        });
-                    } else {
-                        const row = document.createElement('tr');
-                        row.innerHTML = '<td colspan="9">No data available</td>';
-                        userTableBody.appendChild(row);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching user data:', error);
-                });
-        }
-
-        // Function to search user by username
-        function searchUser() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const userTableBody = document.getElementById('user');
-            const rows = userTableBody.getElementsByTagName('tr');
-            let found = false;
-
-            // Loop through all rows and hide/show based on the search term
-            for (let i = 0; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName('td');
-                const username = cells[1]?.textContent.toLowerCase();
-
-                if (username && username.includes(searchTerm)) {
-                    rows[i].style.display = ''; // Show row if matches
-                    found = true;
-                } else {
-                    rows[i].style.display = 'none'; // Hide row if doesn't match
-                }
-            }
-
-            // Show or hide the search message based on the search result
-            const searchMessage = document.getElementById('searchMessage');
-            if (found) {
-                searchMessage.style.display = 'block'; // Show message if found
-            } else {
-                searchMessage.style.display = 'none'; // Hide message if not found
-            }
-        }
-
-        // Load user data when the page is loaded
-        window.onload = loadUserData;
-    </script>
-</body>
-</html>
+     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+     <script src="user.js"></script>
+ </body>
+ </html>
