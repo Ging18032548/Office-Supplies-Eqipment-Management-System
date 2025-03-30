@@ -20,11 +20,13 @@
         </div>
 
         <!-- delete edit -->
-        <button class="edit-btn" data-id="${user.id}">Edit</button>
-        <button class="delete-btn" data-id="${user.id}">Delete</button>
-        
-        <input type="text" id="search" class="search-box" placeholder="🔍 search">
+        <!-- <button class="edit-btn" data-id="${user.id}">Edit</button>
+        <button class="delete-btn" data-id="${user.id}">Delete</button> -->
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
 
+        <p><input type="text" id="search" class="search-box" placeholder="🔍 search"></p>
+        
         <table id="user">
             <thead>
                 <tr>
@@ -42,6 +44,7 @@
             <tbody id="user-body"></tbody>
         </table>
     </div>
+
 
      <!-- ข้อความแจ้งเตือนหลังการอัพเดต -->
      <div id="message" class="message"></div>

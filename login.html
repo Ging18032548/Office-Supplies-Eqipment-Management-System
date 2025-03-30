@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,6 +48,54 @@
             } else {
                 // ถ้าผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
                 alert('Invalid username or password.');
+            }
+        });
+    </script>
+
+    <a href="webpage.html">Back to Homepage</a>
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login to Your Account</h2>
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p class="register-link">Don't have an account? <a href="register.html">Register here</a>.</p>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            const response = await fetch('http://localhost:8880/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await response.json();
+            if (result.token) {
+                alert("Login Successful");
+                localStorage.setItem("token", result.token);
+                window.location.href = "/user.html"; // เปลี่ยนเส้นทางไปหน้า user
+            } else {
+                alert(result.error);
             }
         });
     </script>

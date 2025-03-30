@@ -1,47 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.getElementById("table-body");
-
-    // โหลดข้อมูลจาก API
-    fetch("http://localhost:8880/equipment")
+    fetch("http://localhost:8080/api.php?table=equipment")  // เปลี่ยนเป็น 'equipment'
         .then(response => response.json())
-        .then(equipment => {
-            tableBody.innerHTML = ""; // ล้างข้อมูลเดิม
-            equipment.forEach(item => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${item.id}</td>
-                    <td>${item.name}</td>
-                    <td>${item.category}</td>
-                    <td>${item.brand}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.purchase_date}</td>
-                    <td>${item.status}</td>
-                    <td>${item.description}</td>
-                    <td>
-                        <button class="delete-btn" onclick="deleteEquipment(${item.id})">Delete</button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        })
-        .catch(error => console.error("Error fetching equipment:", error));
-});
+        .then(data => {
+            let tableBody = document.getElementById("table-body"); // ใช้ ID ที่ถูกต้อง
+            tableBody.innerHTML = ""; // เคลียร์ข้อมูลเก่า
 
-// ฟังก์ชันลบข้อมูล
-function deleteEquipment(id) {
-    if (confirm("Are you sure you want to delete this equipment?")) {
-        fetch(`http://localhost:8880/equipment/${id}`, { method: "DELETE" })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                location.reload(); // โหลดหน้าใหม่
-            })
-            .catch(error => console.error("Error deleting equipment:", error));
-}
+            if (data.length > 0) {
+                data.forEach(row => {
+                    let rowData = "<tr>";
+                    Object.values(row).forEach(value => {
+                        rowData += `<td>${value}</td>`;
+                    });
+                    rowData += "</tr>";
+                    tableBody.innerHTML += rowData; // เพิ่มข้อมูลลงในตาราง
+                });
+            } else {
+                tableBody.innerHTML = "<tr><td colspan='9'>No data available</td></tr>"; // กรณีไม่มีข้อมูล
+            }
+        })
+        .catch(error => console.error("Error loading equipment data:", error)); // จัดการ error
+});
 
 // ฟังก์ชันกลับไปหน้า Homepage
 function goBack() {
     window.location.href = "webpage.html"; // กลับไปหน้า homepage
 }
-}
-

@@ -5,43 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance Records</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="main-container"></div>
-    <div class="content-box">
-        <a href="webpage.html" class="btn back-home">Back to Homepage</a>
-        <h2>Maintenance Records</h2>
-        
-        <!-- <div class="search-container">
-            <button class="search-button">🔍 Search MaintenanceID</button>
+    <div class="main-container">
+        <div class="content-box">
+            <a href="webpage.html" class="btn back-home">Back to Homepage</a>
+            <h2>Maintenance Records</h2>
+            
+            <!-- ข้อความแสดงผลหลังค้นหา -->
+            <div id="infoMessage" style="display: none; color: rgb(155, 228, 202); margin-top: 10px;">
+                Information was found!
+            </div>
+
+            <input type="text" id="search" class="search-box" placeholder="🔍 search">
+
+            <!-- ตารางแสดงข้อมูล -->
+            <table id="maintenance-table">
+                <thead>
+                    <tr>
+                        <th>MaintenanceID</th>
+                        <th>EquipmentID</th>
+                        <th>Maintenance Date</th>
+                        <th>Description</th>
+                        <th>Repair Status</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody id="maintenance"></tbody>
+            </table>
         </div>
-
-        <button id="addBtn" class="btn add">Add MaintenanceID</button> -->
-
-        <!-- ตัวอย่าง -->
-        <button class="search-button"><i class="fas fa-search"></i>🔍 Search MaintenanceID</button>
-        <button class="btn add"><i class="fas fa-plus-circle"></i> Add MaintenanceID</button>
-
-         <!-- ข้อความแสดงผลหลังค้นหา -->
-         <div id="infoMessage" style="display: none; color: rgb(132, 205, 132); margin-top: 10px;">
-            Information was found!
-        </div>
-
-        <table id="maintenance-table">
-            <thead>
-                <tr>
-                    <th>MaintenanceID</th>
-                    <th>EquipmentID</th>
-                    <th>Maintenance Date</th>
-                    <th>Description</th>
-                    <th>Repair</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody id="maintenance"></tbody>
-        </table>
     </div>
-        
+
+    <!-- สคริปต์เชื่อม API และจัดการข้อมูล -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            axios.get('http://localhost:8080/api.php?table=maintenance') // เปลี่ยน URL ให้ตรงกับ API ของคุณ
+                .then(function(response) {
+                    const maintenanceData = response.data; // ข้อมูลที่ได้จาก API
+                    const maintenanceTableBody = document.getElementById('maintenance'); // tbody ของตาราง
+
+                    // ถ้าไม่มีข้อมูลใน API ให้แสดงข้อความ "No data available"
+                    if (maintenanceData.length === 0) {
+                        maintenanceTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No data available</td></tr>';
+                    } else {
+                        // ลูปข้อมูลและแสดงในตาราง
+                        maintenanceData.forEach(function(record) {
+                            const row = document.createElement('tr');
+
+                            // สร้างแต่ละคอลัมน์ในแถว
+                            row.innerHTML = `
+                                <td>${record.maintenance_id}</td>
+                                <td>${record.equipment_id}</td>
+                                <td>${record.maintenance_date}</td>
+                                <td>${record.description}</td>
+                                <td>${record.repairStatus}</td>
+                                <td>${record.cost}</td>
+                            `;
+                            maintenanceTableBody.appendChild(row); // เพิ่มแถวลงใน tbody
+                        });
+
+                        // แสดงข้อความว่าพบข้อมูล
+                        document.getElementById('infoMessage').style.display = 'block';
+                    }
+                })
+                .catch(function(error) {
+                    console.error("Error fetching data: ", error);
+                });
+        });
+    </script>
 </body>
 </html>

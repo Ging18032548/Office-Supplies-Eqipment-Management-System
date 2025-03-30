@@ -1,161 +1,61 @@
-const express = require('express');
-const cors = require('cors'); // ป้องกัน CORS error
-const db = require('./db');
+// const mysql = require("mysql2");
 
-const app = express();
+// const connection = mysql.createConnection({
+//     host: 'localhost', // หรือ IP ของ container MySQL
+//     user: 'root', // ชื่อผู้ใช้ฐานข้อมูล
+//     password: 'password', // รหัสผ่านฐานข้อมูล
+//     database: 'webmanagement' // ชื่อฐานข้อมูล
+// });
 
-app.use(express.json()); // ✅ อ่าน JSON ที่ส่งมาทาง `req.body`
-app.use(cors()); // ✅ เปิดให้ client อื่นเรียก API ได้
+// connection.connect((err) => {
+//     if (err) {
+//         console.error("Error connecting to the database: ", err);
+//         return;
+//     }
+//     console.log("Connected to the database!");
+// });
 
-// --------------------- 📌 EQUIPMENT ---------------------
-// 📌 ดึงข้อมูล Equipment ทั้งหมด
-app.get('/equipment', async (req, res) => {
-    try {
-        const [rows] = await db.query('SELECT * FROM equipment');
-        res.json(rows);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+// module.exports = connection;
+
+
+// ใช้ require เพื่อเชื่อมต่อกับ db.js
+const db = require('./server/db');
+
+// การเชื่อมต่อกับฐานข้อมูลสามารถใช้จากที่นี่
+// ตัวอย่างการ query ข้อมูลจากฐานข้อมูล
+db.query('SELECT * FROM equipment', (err, rows) => {
+    if (err) {
+        console.error('Error fetching data: ', err);
+    } else {
+        console.log('Equipment data: ', rows);
     }
 });
 
-// 📌 เพิ่ม Equipment
-app.post('/equipment', (req, res) => {
-    const { name, category, status } = req.body;
-    const sql = "INSERT INTO equipment (name, category, status) VALUES (?, ?, ?)";
-    db.query(sql, [name, category, status], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Equipment added successfully!", id: result.insertId });
-    });
-});
+const axios = require('axios');
 
-// 📌 อัปเดต Equipment
-app.put('/equipment/:id', (req, res) => {
-    const { name, category, status } = req.body;
-    const sql = "UPDATE equipment SET name=?, category=?, status=? WHERE id=?";
-    db.query(sql, [name, category, status, req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Equipment updated successfully!" });
-    });
-});
+// URL ของ API ที่รันในเซิร์ฟเวอร์
+const apiUrl = 'http://localhost:8880/equipment';
 
-// 📌 ลบ Equipment
-app.delete('/equipment/:id', (req, res) => {
-    const sql = "DELETE FROM equipment WHERE id=?";
-    db.query(sql, [req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Equipment deleted successfully!" });
-    });
-});
+// การดึงข้อมูลจาก API
+axios.get(apiUrl)
+  .then(response => {
+    console.log('Equipment data:', response.data);  // ข้อมูลจาก API
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
 
-// --------------------- 📌 BORROW RECORDS ---------------------
-app.get('/borrow_records', async (req, res) => {
-    try {
-        const [rows] = await db.query('SELECT * FROM borrow_records');
-        res.json(rows);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+// ตัวอย่างการเพิ่มข้อมูลใหม่ไปยังฐานข้อมูลผ่าน API
+const newEquipment = {
+  name: 'New Equipment',
+  category: 'Category A',
+  status: 'Available'
+};
 
-app.post('/borrow_records', (req, res) => {
-    const { user_id, equipment_id, borrow_date, return_date, status } = req.body;
-    const sql = "INSERT INTO borrow_records (user_id, equipment_id, borrow_date, return_date, status) VALUES (?, ?, ?, ?, ?)";
-    db.query(sql, [user_id, equipment_id, borrow_date, return_date, status], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Borrow record added!", id: result.insertId });
-    });
-});
-
-app.put('/borrow_records/:id', (req, res) => {
-    const { user_id, equipment_id, borrow_date, return_date, status } = req.body;
-    const sql = "UPDATE borrow_records SET user_id=?, equipment_id=?, borrow_date=?, return_date=?, status=? WHERE id=?";
-    db.query(sql, [user_id, equipment_id, borrow_date, return_date, status, req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Borrow record updated!" });
-    });
-});
-
-app.delete('/borrow_records/:id', (req, res) => {
-    const sql = "DELETE FROM borrow_records WHERE id=?";
-    db.query(sql, [req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Borrow record deleted!" });
-    });
-});
-
-// --------------------- 📌 MAINTENANCE ---------------------
-app.get('/maintenance', async (req, res) => {
-    try {
-        const [rows] = await db.query('SELECT * FROM maintenance');
-        res.json(rows);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.post('/maintenance', (req, res) => {
-    const { equipment_id, maintenance_date, description, repair, cost } = req.body;
-    const sql = "INSERT INTO maintenance (equipment_id, maintenance_date, description, repair, cost) VALUES (?, ?, ?, ?, ?)";
-    db.query(sql, [equipment_id, maintenance_date, description, repair, cost], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Maintenance record added!", id: result.insertId });
-    });
-});
-
-app.put('/maintenance/:id', (req, res) => {
-    const { equipment_id, maintenance_date, description, repair, cost } = req.body;
-    const sql = "UPDATE maintenance SET equipment_id=?, maintenance_date=?, description=?, repair=?, cost=? WHERE id=?";
-    db.query(sql, [equipment_id, maintenance_date, description, repair, cost, req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Maintenance record updated!" });
-    });
-});
-
-app.delete('/maintenance/:id', (req, res) => {
-    const sql = "DELETE FROM maintenance WHERE id=?";
-    db.query(sql, [req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Maintenance record deleted!" });
-    });
-});
-
-// --------------------- 📌 USERS ---------------------
-app.get('/users', async (req, res) => {
-    try {
-        const [rows] = await db.query('SELECT * FROM users');
-        res.json(rows);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
-app.post('/users', (req, res) => {
-    const { username, password, role } = req.body;
-    const sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-    db.query(sql, [username, password, role], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "User added!", id: result.insertId });
-    });
-});
-
-app.put('/users/:id', (req, res) => {
-    const { username, password, role } = req.body;
-    const sql = "UPDATE users SET username=?, password=?, role=? WHERE id=?";
-    db.query(sql, [username, password, role, req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "User updated!" });
-    });
-});
-
-app.delete('/users/:id', (req, res) => {
-    const sql = "DELETE FROM users WHERE id=?";
-    db.query(sql, [req.params.id], (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "User deleted!" });
-    });
-});
-
-// 📌 เปิด Server บน Port 8880
-app.listen(8880, () => {
-    console.log('✅ Server is running on http://localhost:8880');
-});
+axios.post(apiUrl, newEquipment)
+  .then(response => {
+    console.log('Added new equipment:', response.data);
+  })
+  .catch(error => {
+    console.error('Error adding equipment:', error);
+  });

@@ -1,15 +1,17 @@
-// Function to load user data from the database
+// ฟังก์ชันสำหรับโหลดข้อมูลผู้ใช้จากฐานข้อมูล
 function loadUserData() {
+    // ส่งคำขอ GET ไปยัง API เพื่อนำข้อมูลผู้ใช้
     axios.get('http://localhost:8080/index.php?route=/sql&pos=0&db=webdb&table=user')
         .then(response => {
-            const users = response.data;
-            const userTableBody = document.getElementById('user-body'); // Updated to user-body
+            const users = response.data; // ข้อมูลผู้ใช้ที่ได้รับจาก API
+            const userTableBody = document.getElementById('user-body'); // หาตัว tbody ของตารางที่จะแสดงข้อมูล
 
-            // Clear previous rows
+            // ลบแถวเดิมที่มีอยู่
             userTableBody.innerHTML = '';
 
-            // Check if there is any data
+            // ตรวจสอบว่ามีข้อมูลผู้ใช้หรือไม่
             if (users.length > 0) {
+                // ถ้ามีข้อมูลผู้ใช้ ให้สร้างแถวใหม่สำหรับแสดงข้อมูล
                 users.forEach(user => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -23,47 +25,16 @@ function loadUserData() {
                         <td>${user.department}</td>
                         <td>${user.role}</td>
                     `;
-                    userTableBody.appendChild(row);
+                    userTableBody.appendChild(row); // เพิ่มแถวที่สร้างลงใน tbody
                 });
             } else {
+                // ถ้าไม่มีข้อมูล ให้แสดงข้อความ "No data available"
                 const row = document.createElement('tr');
                 row.innerHTML = '<td colspan="9">No data available</td>';
                 userTableBody.appendChild(row);
             }
         })
         .catch(error => {
-            console.error('Error fetching user data:', error);
+            console.error('Error fetching user data:', error); // ถ้ามีข้อผิดพลาดในการดึงข้อมูลจาก API
         });
 }
-
-// Function to search user by username
-function searchUser() {
-    const searchTerm = document.getElementById('search').value.toLowerCase(); // Updated to 'search'
-    const userTableBody = document.getElementById('user-body'); // Updated to user-body
-    const rows = userTableBody.getElementsByTagName('tr');
-    let found = false;
-
-    // Loop through all rows and hide/show based on the search term
-    for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName('td');
-        const username = cells[1]?.textContent.toLowerCase();
-
-        if (username && username.includes(searchTerm)) {
-            rows[i].style.display = ''; // Show row if matches
-            found = true;
-        } else {
-            rows[i].style.display = 'none'; // Hide row if doesn't match
-        }
-    }
-
-    // Show or hide the search message based on the search result
-    const searchMessage = document.getElementById('infoMessage'); // Updated to infoMessage
-    if (found) {
-        searchMessage.style.display = 'none'; // Hide message if found
-    } else {
-        searchMessage.style.display = 'block'; // Show message if not found
-    }
-}
-
-// Load user data when the page is loaded
-window.onload = loadUserData;

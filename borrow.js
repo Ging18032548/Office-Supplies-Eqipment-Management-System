@@ -1,4 +1,3 @@
-// borrow.js
 document.addEventListener("DOMContentLoaded", function() {
     // ดึงข้อมูลจาก API
     axios.get('get_borrow_records.php')
