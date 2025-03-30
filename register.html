@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="register-container">
         <header>
-            <h1>Create Your Account</h1>
-            
+            <h1>Create Your Account</h1>   
         </header>
         <form class="register-form" action="register_handler.php" method="POST">
             <div class="input-group">
@@ -39,14 +40,19 @@
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select>
-            
+
+            <a href="webpage.html">
             <button type="submit" class="register-button">Apply to Register</button>
+            </a>
         </form>
         <p class="login-link">Already have an account? 
             <a href="login.html">Login here</a>.</p>
     </div>
 
     <script src="script.js"></script>
-    <a href="webpage.html">Back to Homepage</a>
+    <p>
+    <a href="webpage.html">Back to Homepage</a>.</p>
+    <!-- ปุ่ม Apply -->
+
 </body>
 </html>
