@@ -151,6 +151,12 @@ header h1 {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* ปรับตำแหน่งของปุ่ม Apply to Register ให้อยู่ตรงกลาง */
+.register-button-container {
+    display: flex;
+    justify-content: center; /* จัดตำแหน่งปุ่มให้ตรงกลาง */
+    width: 100%;
+}
 .register-button:hover {
     background-color: #5c6bc0;
     transform: scale(1.02);

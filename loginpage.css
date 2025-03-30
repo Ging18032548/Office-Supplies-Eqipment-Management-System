@@ -1,0 +1,117 @@
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* ฟอนต์สะอาดและทันสมัย */
+    background-color: #f4f4f9; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    min-height: 100vh; /* Full height screen */
+}
+
+/* Login Container */
+.login-container {
+    width: 90%;
+    max-width: 400px; /* Fixed width for balance */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 30px; /* Inner spacing */
+    text-align: center; /* Centered content */
+    box-sizing: border-box; /* Ensures padding doesn't mess with width */
+}
+
+/* Header Styling */
+header h1 {
+    font-size: 24px; /* Large font size for emphasis */
+    font-weight: 500; /* Semi-bold font weight */
+    color: #003366; /* Dark blue for elegance */
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.login-form {
+    display: flex;
+    flex-direction: column; /* Stacks form elements vertically */
+    gap: 15px; /* Adds spacing between form elements */
+}
+
+/* Input Group Styling */
+.input-group label {
+    font-size: 14px;
+    color: #34495e; /* Slightly darker gray for labels */
+    margin-bottom: 5px;
+    text-align: left; /* Aligns label with input fields */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px; /* Inner spacing */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Smooth rounded edges */
+    font-size: 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #00509e; /* Bright blue border on focus */
+    box-shadow: 0 0 8px rgba(0, 80, 158, 0.2); /* Glow effect on focus */
+}
+
+/* Button Styling */
+.login-button {
+    background-color: #003366; /* Bold blue background */
+    color: white; /* White text for contrast */
+    font-size: 16px;
+    font-weight: 500; /* Semi-bold for emphasis */
+    padding: 12px;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Makes the button full-width */
+}
+
+.login-button:hover {
+    background-color: #00509e; /* Lighter blue on hover */
+    transform: scale(1.02); /* Slight zoom effect */
+}
+
+/* Register Link Styling */
+.register-link {
+    margin-top: 15px; /* Space above */
+    font-size: 14px;
+    color: #34495e;
+}
+
+.register-link a {
+    color: #003366; /* Matches blue theme */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #00509e; /* Lighter blue on hover */
+}
+
+/* Back Link Styling */
+.back-link {
+    display: inline-block;
+    margin-top: 20px; /* Space above */
+    color: #003366; /* Matches blue theme */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #ccc; /* Light gray border for definition */
+    padding: 10px 20px; /* Button-like padding */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #00509e; /* Blue hover background */
+    color: white; /* White text on hover */
+}

@@ -45,6 +45,7 @@
 
 
 const mysql = require("mysql2");
+const db = require('./db'); // Ensure this path is correct
 
 const connection = mysql.createConnection({
     host: 'localhost', // หรือ IP ของ container MySQL

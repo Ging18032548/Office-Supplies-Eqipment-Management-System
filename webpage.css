@@ -1,0 +1,143 @@
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* ฟอนต์สะอาดและทันสมัย */
+    background-color: #f4f4f9; /* พื้นหลังสีเทาอ่อนเพื่อให้ดูนุ่มนวล */
+    margin: 0;
+    padding: 0;
+    color: #333; /* สีข้อความเข้มเพื่อให้อ่านง่าย */
+    display: flex;
+    justify-content: center; /* จัดตำแหน่งในแนวนอนให้อยู่กลาง */
+    align-items: center; /* จัดตำแหน่งในแนวตั้งให้อยู่กลาง */
+    height: 100vh; /* ความสูงเต็มหน้าจอ */
+}
+/* Header Styling */
+header h1 {
+    font-size: 30px; /* ขนาดตัวอักษรใหญ่ขึ้นเพื่อความเด่นชัด */
+    font-weight: 700; /* ตัวหนาเพื่อเน้นความสำคัญ */
+    color: #003366; /* สีน้ำเงินเข้มที่ดูหรูหรา */
+    margin-bottom: 25px;
+    text-align: center; /* จัดตำแหน่งหัวข้อให้อยู่กลาง */
+}
+
+/* Form Styling */
+.register-form {
+    display: flex;
+    flex-direction: column; /* จัดระเบียบส่วนต่างๆ ในแนวตั้ง */
+    gap: 20px; /* เพิ่มช่องว่างระหว่างส่วนต่างๆ ของฟอร์ม */
+}
+
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* จัดตำแหน่ง label ให้อยู่ทางซ้าย */
+    justify-content: center;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 15px; /* ขนาดตัวอักษรเพิ่มขึ้นเพื่อความชัดเจน */
+    color: #34495e; /* สีเทาที่เข้มขึ้นเพื่อให้มองเห็นได้ดี */
+    margin-bottom: 8px;
+    text-align: left; /* จัดตำแหน่ง label ให้อยู่ทางซ้าย */
+}
+
+/* Input and Select Styling */
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px; /* เพิ่มการเว้นระยะภายในสำหรับความสะดวกในการพิมพ์ */
+    border: 1px solid #ddd; /* กรอบสีเทาอ่อน */
+    border-radius: 8px; /* มุมโค้งมนเพื่อให้ดูทันสมัย */
+    font-size: 14px; /* ขนาดตัวอักษรมาตรฐาน */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เงานุ่ม */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus Effects for Input and Select */
+.input-group input:focus, .input-group select:focus {
+    border-color: #00509e; /* กรอบสีน้ำเงินสว่างเมื่อโฟกัส */
+    box-shadow: 0 0 8px rgba(0, 80, 158, 0.2); /* เอฟเฟกต์การเรืองแสง */
+    outline: none; /* ลบเส้นขอบเริ่มต้นที่มักจะเห็นในเบราว์เซอร์ */
+}
+
+/* Dropdown Styling (Role Button) */
+.input-group select {
+    background-color: #f9f9f9; /* พื้นหลังสีขาวอมเทา */
+    cursor: pointer; /* ลูกศรเมาส์แสดงเป็นปกติ */
+}
+
+.input-group select:focus {
+    background-color: #ffffff; /* พื้นหลังขาวเมื่อโฟกัส */
+}
+
+/* Back Link Styling */
+.back-link {
+    display: inline-block;
+    margin-top: 25px; /* ระยะห่างจากฟอร์ม */
+    color: #003366; /* สีที่เข้ากับธีมของเว็บไซต์ */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+}
+
+.back-link:hover {
+    color: #00509e; /* สีน้ำเงินอ่อนขึ้นเมื่อเอาเมาส์ไปวาง */
+    text-decoration: underline; /* เพิ่มเส้นใต้เมื่อเอาเมาส์ไปวาง */
+}
+/* Container Styling */
+.register-container {
+    width: 95%; /* Increased width for a larger appearance */
+    max-width: 800px; /* Allow larger width on bigger screens */
+    background-color: #ffffff; /* White background for clarity */
+    border-radius: 20px; /* Softer rounded corners for elegance */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow for better depth */
+    padding: 50px; /* Increased padding for more spacious layout */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Align elements neatly within the container */
+    box-sizing: border-box; /* Ensure padding doesn't overflow the container size */
+    border: 2px solid #ddd; /* Subtle border for structure */
+}
+
+/* Register Button Styling */
+.register-button {
+    background-color: #003366; /* พื้นหลังสีน้ำเงินเข้ม */
+    color: white; /* ข้อความสีขาว */
+    font-size: 16px;
+    font-weight: 600; /* ตัวหนาเล็กน้อยเพื่อเน้น */
+    padding: 14px; /* เพิ่มการเว้นระยะภายในสำหรับปุ่มที่ใหญ่ขึ้น */
+    border: none;
+    border-radius: 20px; /* มุมโค้งมน */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* ให้ปุ่มมีความกว้างเต็ม */
+    margin-top: 15px; /* ระยะห่างจากปุ่มด้านบน */
+}
+
+.register-button:hover {
+    background-color: #00509e; /* เปลี่ยนสีพื้นหลังเป็นสีน้ำเงินอ่อนขึ้นเมื่อวางเมาส์ */
+    transform: scale(1.05); /* เพิ่มขนาดเล็กน้อยเมื่อวางเมาส์ */
+}
+
+/* Responsive Design (for mobile view) */
+@media screen and (max-width: 768px) {
+    .register-container {
+        padding: 20px; /* ลด padding เมื่อขนาดหน้าจอเล็กลง */
+    }
+
+    header h1 {
+        font-size: 24px; /* ขนาดตัวอักษรหัวข้อเล็กลง */
+        margin-bottom: 15px;
+    }
+
+    .register-button {
+        padding: 12px; /* ปรับขนาด padding ของปุ่ม */
+    }
+
+    .input-group input, .input-group select {
+        padding: 10px; /* ปรับขนาด padding ของ input */
+    }
+}
