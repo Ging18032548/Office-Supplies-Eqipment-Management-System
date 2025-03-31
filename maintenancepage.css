@@ -1,199 +1,103 @@
-/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;700&display=swap');
+
 body {
-    font-family: 'Poppins', sans-serif; /* ใช้ฟอนต์ Poppins */
-    background-color: #f4f4f9; /* พื้นหลังสีอ่อน */
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef6fc;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* จัดกลาง */
-    align-items: center; /* จัดกลางแนวตั้ง */
-    min-height: 100vh; /* เต็มความสูงของหน้าจอ */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-
-/* Login Container */
-.login-container {
+.main-container {
     width: 90%;
-    max-width: 450px; /* Adjust container width for balance */
-    background-color: #ffffff; /* White background for contrast */
-    border: 2px solid #ccc; /* Subtle border */
-    border-radius: 12px; /* Rounded edges for modern appearance */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Elegant shadow for depth */
-    padding: 30px; /* Inner spacing */
-    text-align: center; /* Centered text alignment */
-    position: relative; /* Allows precise positioning of elements */
-}
-
-/* Header Styling */
-header h1 {
-    font-size: 24px; /* Large font size */
-    font-weight: 600; /* Bold font weight */
-    color: #003366; /* Elegant dark blue */
-    margin-bottom: 20px; /* Space below header */
-    border-bottom: 2px solid #00509e; /* Bottom border for emphasis */
-    padding-bottom: 8px; /* Adds spacing between text and border */
-    display: inline-block; /* Keeps border tight around text */
-}
-
-/* Form Styling */
-.login-form {
-    display: flex;
-    flex-direction: column; /* Stacks elements vertically */
-    gap: 20px; /* Adds spacing between form fields */
-    margin-top: 10px; /* Space above the form */
-}
-
-/* Input Group Styling */
-.input-group label {
-    font-size: 14px; /* Standard font size */
-    color: #555; /* Neutral gray */
-    margin-bottom: 5px;
-    text-align: left; /* Aligns labels to inputs */
-    display: block; /* Ensures labels are on their own line */
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px; /* Adds spacing inside inputs */
-    border: 1px solid #ddd; /* Light gray border */
-    border-radius: 8px; /* Smooth, modern corners */
-    font-size: 14px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.input-group input:focus {
-    border-color: #00509e; /* Blue border on focus */
-    box-shadow: 0 0 8px rgba(0, 80, 158, 0.2); /* Glow effect on focus */
-    background-color: #fff; /* Clear background focus */
-}
-
-/* Button Styling */
-.login-button {
-    background-color: #00509e; /* Blue background */
-    color: white; /* White text for contrast */
-    font-size: 16px; /* Text size */
-    font-weight: 500; /* Semi-bold */
-    padding: 12px;
-    border: none; /* Removes button border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px; /* Space above the button */
-}
-
-.login-button:hover {
-    background-color: #003366; /* Darker blue on hover */
-    transform: scale(1.02); /* Slight zoom on hover */
-}
-
-/* Register Link Styling */
-.register-link {
-    margin-top: 15px; /* Space above */
-    font-size: 14px;
-    color: #34495e;
-}
-
-.register-link a {
-    color: #00509e; /* Matches blue theme */
-    text-decoration: none; /* Removes underline */
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.register-link a:hover {
-    color: #003366; /* Darker blue on hover */
-}
-
-/* Back Link Styling */
-.back-link {
-    display: inline-block;
-    margin-top: 20px; /* Space above */
-    color: #00509e; /* Matches blue theme */
-    text-decoration: none; /* Removes underline */
-    font-size: 14px;
-    font-weight: 500; /* Semi-bold */
-    border: 1px solid #ccc; /* Light gray border */
-    padding: 10px 20px; /* Padding for button effect */
-    border-radius: 8px; /* Rounded edges */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute; /* Positioned for layout */
-    bottom: -50px; /* Moves link below container */
-    left: 50%; /* Centers the link horizontally */
-    transform: translateX(-50%); /* Aligns with center of container */
-}
-
-.back-link:hover {
-    background-color: #00509e; /* Blue hover effect */
-    color: white; /* White text on hover */
-}
-.container {
-    text-align: center;
-    background-color: #ffffff; /* พื้นหลังของกล่องข้อความ */
-    padding: 40px 60px; /* เพิ่มช่องว่างภายใน */
-    border-radius: 10px; /* มุมโค้ง */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* เงาเล็กน้อย */
-    max-width: 600px;
-    width: 100%;
-}
-
-h1 {
-    font-size: 36px; /* ขนาดตัวอักษรใหญ่ */
-    color: #ff6f61; /* สีของข้อความ */
-    margin-bottom: 20px;
-    font-weight: bold;
+    max-width: 1200px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    font-size: 24px; /* ขนาดตัวอักษรกลาง */
-    color: #34495e; /* สีของข้อความรอง */
-    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000080;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-p {
-    font-size: 16px;
-    color: #7f8c8d; /* สีของข้อความทั่วไป */
-    margin-bottom: 30px;
-}
-
-/* Maintenance Icon Styling */
-.maintenance-icon {
-    font-size: 80px; /* ขนาดของไอคอน */
-    color: #ff6f61; /* สีของไอคอน */
-    margin-bottom: 30px;
-}
-
-/* Button Styling */
-button {
-    padding: 12px 30px;
-    background-color: #ff6f61; /* สีพื้นหลังของปุ่ม */
-    color: white;
-    border: none;
+.search-box {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
     border-radius: 8px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+button.edit, button.btn.add, button.edit-btn, button.delete-btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #1b4f72;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
-button:hover {
-    background-color: #e14a3f; /* สีเมื่อเม้าชี้ */
+button.edit:hover, button.btn.add:hover, button.edit-btn:hover, button.delete-btn:hover {
+    background-color: #000080;
+    color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px 40px;
-    }
 
-    h1 {
-        font-size: 30px;
-    }
+a.btn.back-home {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: white;
+    color: #6a5acd;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
 
-    h2 {
-        font-size: 20px;
-    }
+a.btn.back-home:hover {
+    background-color: #000080;
+    border-color: #000080;
+    color: white;
+    transform: scale(1.05);
+}
 
-    p {
-        font-size: 14px;
-    }
+#maintenance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #bbdefb;
+}
+
+#maintenance-table th, #maintenance-table td {
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+#maintenance-table th {
+    background-color: #00509e;
+    color: white;
+    font-weight: bold;
+}
+
+#maintenance-table tr:hover {
+    background-color: #000080;
+    color: white;
+    transform: scale(1.02);
 }

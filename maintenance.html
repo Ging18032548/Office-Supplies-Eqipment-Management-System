@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,23 +6,27 @@
     <title>Maintenance Records</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="maintenancepage.css"> <!-- แก้ไขตรงนี้ -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- เพิ่มฟอนต์ Poppins -->
+    <link rel="stylesheet" href="maintenancepage.css">
 </head>
-
 <body>
     <div class="main-container">
         <div class="content-box">
             <a href="webpage.html" class="btn back-home">Back to Homepage</a>
             <h2>Maintenance Records</h2>
-            
-            <!-- ข้อความแสดงผลหลังค้นหา -->
+
+            <button id="addBtn" class="btn add">Add Maintenance ID</button>
+
             <div id="infoMessage" style="display: none; color: rgb(155, 228, 202); margin-top: 10px;">
                 Information was found!
             </div>
 
+            <!-- delete edit -->
+            <button class="edit-btn" data-id="${user.id}">Edit</button>
+            <button class="delete-btn" data-id="${user.id}">Delete</button>
+            
             <input type="text" id="search" class="search-box" placeholder="🔍 search">
 
-            <!-- ตารางแสดงข้อมูล -->
             <table id="maintenance-table">
                 <thead>
                     <tr>
@@ -39,25 +43,18 @@
         </div>
     </div>
 
-    <!-- สคริปต์เชื่อม API และจัดการข้อมูล -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            axios.get('http://localhost:8080/api.php?table=maintenance') // เปลี่ยน URL ให้ตรงกับ API ของคุณ
+            axios.get('http://localhost:8080/api.php?table=maintenance')
                 .then(function(response) {
-                    const maintenanceData = response.data; // ข้อมูลที่ได้จาก API
-                    const maintenanceTableBody = document.getElementById('maintenance'); // tbody ของตาราง
-
-                    // ถ้าไม่มีข้อมูลใน API ให้แสดงข้อความ "No data available"
+                    const maintenanceData = response.data;
+                    const maintenanceTableBody = document.getElementById('maintenance');
                     if (maintenanceData.length === 0) {
                         maintenanceTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No data available</td></tr>';
                     } else {
-                        // ลูปข้อมูลและแสดงในตาราง
                         maintenanceData.forEach(function(record) {
                             const row = document.createElement('tr');
-
-                            // สร้างแต่ละคอลัมน์ในแถว
                             row.innerHTML = `
                                 <td>${record.maintenance_id}</td>
                                 <td>${record.equipment_id}</td>
@@ -66,10 +63,8 @@
                                 <td>${record.repairStatus}</td>
                                 <td>${record.cost}</td>
                             `;
-                            maintenanceTableBody.appendChild(row); // เพิ่มแถวลงใน tbody
+                            maintenanceTableBody.appendChild(row);
                         });
-
-                        // แสดงข้อความว่าพบข้อมูล
                         document.getElementById('infoMessage').style.display = 'block';
                     }
                 })
