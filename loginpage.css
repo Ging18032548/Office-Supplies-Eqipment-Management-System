@@ -11,10 +11,24 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; /* ให้พื้นที่เต็มหน้าจอ */
-    color: #333; /* สีตัวอักษร */
-   
+    color: #333;
 }
 
+/* กรอบรวม (Content Box) ที่ใช้ flex เพื่อจัดวางส่วนหัว, ฟอร์ม, และส่วนลิงก์ */
+.content-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff; /* พื้นหลังสีขาว */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* กำหนดความกว้างสูงสุด */
+    box-sizing: border-box;
+    min-height: 450px;  /* กำหนดความสูงขั้นต่ำเพื่อให้มีพื้นที่ในการจัดวาง */
+}
+
+/* ส่วนหัว */
 h2 {
     font-size: 28px;
     font-weight: 600;
@@ -25,28 +39,27 @@ h2 {
 
 /* ฟอร์มเข้าสู่ระบบ */
 form {
-    background-color: #ffffff; /* พื้นหลังสีขาว */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    /* ไม่จำเป็นต้องมี margin-top เพราะ h2 อยู่ด้านบนแล้ว */
+    padding: 0; /* เราจัด spacing โดย h2 และ margin ที่กำหนดภายในฟอร์ม */
     width: 100%;
-    max-width: 400px; /* กำหนดความกว้างสูงสุด */
     box-sizing: border-box;
 }
 
 label {
     font-size: 16px;
-    color: #1e2a47; /* น้ำเงินเข้ม */
+    color: #1e2a47;
     margin-bottom: 8px;
     display: block;
     font-weight: 500;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
     width: 100%;
-    padding: 12px;
+    padding: 10px 10px;
     margin-bottom: 20px;
-    border: 2px solid #ddd; /* กรอบสีเทาอ่อน */
+    border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     background-color: #f9f9f9;
@@ -54,38 +67,43 @@ input[type="text"], input[type="password"] {
     font-family: 'Poppins', sans-serif;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #1e2a47; /* เปลี่ยนกรอบเป็นน้ำเงินเมื่อโฟกัส */
-    box-shadow: 0 0 8px rgba(30, 42, 71, 0.2); /* เงาเบา */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #1e2a47;
+    box-shadow: 0 0 8px rgba(30, 42, 71, 0.2);
 }
 
 /* ปุ่ม Login */
 button[type="submit"] {
-    background-color: #1e2a47; /* น้ำเงินเข้ม */
+    background-color: #000066;
     color: white;
     padding: 12px;
     width: 100%;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #333; /* เปลี่ยนเป็นสีเข้มขึ้นเมื่อ hover */
+    background-color: #333;
 }
 
-/* ลิงค์ลงทะเบียน */
-.register-link {
+/* ส่วนลิงก์ด้านล่าง (Footer Section ภายใน .content-box) */
+.footer-section {
+    margin-top: auto;  /* ผลักส่วนนี้ไปที่ด้านล่างของ container */
     text-align: center;
-    margin-top: 20px;
-    padding-right: 20px;
 }
+
+.register-link {
+    font-size: 15px;
+}
+
 
 .register-link a {
-    color: #1e2a47; /* น้ำเงินเข้ม */
+    color: #1e2a47;
     text-decoration: none;
 }
 
@@ -93,27 +111,14 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
-/* ลิงค์กลับหน้าแรก */
-a {
-    text-align: center;
+.back-home {
     display: block;
-    margin-top: 20px;
+    margin-top: 15px;
+    color: #3333997;
+    font-size: 15px;
     text-decoration: none;
-    color: #1e2a47; /* น้ำเงินเข้ม */
-    padding-right: 20px;
 }
 
-a:hover {
+.back-home:hover {
     text-decoration: underline;
-}
-
-/* ตั้งค่าระยะห่างด้านขวาสำหรับ content-box */
-.content-box {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเพื่อความโดดเด่น */
-    margin: 0 auto; /* จัดให้อยู่กลาง */
-    width: 80%; /* กำหนดความกว้างของกล่อง */
-    box-sizing: border-box; /* รวม padding ใน width */
 }
