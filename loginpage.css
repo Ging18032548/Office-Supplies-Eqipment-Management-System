@@ -1,117 +1,119 @@
-/* General Body Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;700&display=swap');
+
+/* ฟอนต์และการตั้งค่าพื้นฐาน */
 body {
-    font-family: 'Poppins', sans-serif; /* ฟอนต์สะอาดและทันสมัย */
-    background-color: #f4f4f9; /* Light gray background */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9; /* พื้นหลังสีเทาอ่อน */
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    min-height: 100vh; /* Full height screen */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ให้พื้นที่เต็มหน้าจอ */
+    color: #333; /* สีตัวอักษร */
+   
 }
 
-/* Login Container */
-.login-container {
-    width: 90%;
-    max-width: 400px; /* Fixed width for balance */
-    background-color: #ffffff; /* White background for contrast */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 30px; /* Inner spacing */
-    text-align: center; /* Centered content */
-    box-sizing: border-box; /* Ensures padding doesn't mess with width */
-}
-
-/* Header Styling */
-header h1 {
-    font-size: 24px; /* Large font size for emphasis */
-    font-weight: 500; /* Semi-bold font weight */
-    color: #003366; /* Dark blue for elegance */
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1e2a47; /* น้ำเงินเข้ม */
+    text-align: center;
     margin-bottom: 20px;
 }
 
-/* Form Styling */
-.login-form {
-    display: flex;
-    flex-direction: column; /* Stacks form elements vertically */
-    gap: 15px; /* Adds spacing between form elements */
-}
-
-/* Input Group Styling */
-.input-group label {
-    font-size: 14px;
-    color: #34495e; /* Slightly darker gray for labels */
-    margin-bottom: 5px;
-    text-align: left; /* Aligns label with input fields */
-}
-
-.input-group input {
+/* ฟอร์มเข้าสู่ระบบ */
+form {
+    background-color: #ffffff; /* พื้นหลังสีขาว */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    padding: 12px; /* Inner spacing */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 8px; /* Smooth rounded edges */
-    font-size: 14px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 400px; /* กำหนดความกว้างสูงสุด */
+    box-sizing: border-box;
 }
 
-.input-group input:focus {
-    border-color: #00509e; /* Bright blue border on focus */
-    box-shadow: 0 0 8px rgba(0, 80, 158, 0.2); /* Glow effect on focus */
-}
-
-/* Button Styling */
-.login-button {
-    background-color: #003366; /* Bold blue background */
-    color: white; /* White text for contrast */
+label {
     font-size: 16px;
-    font-weight: 500; /* Semi-bold for emphasis */
+    color: #1e2a47; /* น้ำเงินเข้ม */
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 500;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
     padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd; /* กรอบสีเทาอ่อน */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #1e2a47; /* เปลี่ยนกรอบเป็นน้ำเงินเมื่อโฟกัส */
+    box-shadow: 0 0 8px rgba(30, 42, 71, 0.2); /* เงาเบา */
+}
+
+/* ปุ่ม Login */
+button[type="submit"] {
+    background-color: #1e2a47; /* น้ำเงินเข้ม */
+    color: white;
+    padding: 12px;
+    width: 100%;
     border: none;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%; /* Makes the button full-width */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
-    background-color: #00509e; /* Lighter blue on hover */
-    transform: scale(1.02); /* Slight zoom effect */
+button[type="submit"]:hover {
+    background-color: #333; /* เปลี่ยนเป็นสีเข้มขึ้นเมื่อ hover */
 }
 
-/* Register Link Styling */
+/* ลิงค์ลงทะเบียน */
 .register-link {
-    margin-top: 15px; /* Space above */
-    font-size: 14px;
-    color: #34495e;
+    text-align: center;
+    margin-top: 20px;
+    padding-right: 20px;
 }
 
 .register-link a {
-    color: #003366; /* Matches blue theme */
+    color: #1e2a47; /* น้ำเงินเข้ม */
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-    color: #00509e; /* Lighter blue on hover */
+    text-decoration: underline;
 }
 
-/* Back Link Styling */
-.back-link {
-    display: inline-block;
-    margin-top: 20px; /* Space above */
-    color: #003366; /* Matches blue theme */
+/* ลิงค์กลับหน้าแรก */
+a {
+    text-align: center;
+    display: block;
+    margin-top: 20px;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid #ccc; /* Light gray border for definition */
-    padding: 10px 20px; /* Button-like padding */
-    border-radius: 8px; /* Rounded corners */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #1e2a47; /* น้ำเงินเข้ม */
+    padding-right: 20px;
 }
 
-.back-link:hover {
-    background-color: #00509e; /* Blue hover background */
-    color: white; /* White text on hover */
+a:hover {
+    text-decoration: underline;
+}
+
+/* ตั้งค่าระยะห่างด้านขวาสำหรับ content-box */
+.content-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเพื่อความโดดเด่น */
+    margin: 0 auto; /* จัดให้อยู่กลาง */
+    width: 80%; /* กำหนดความกว้างของกล่อง */
+    box-sizing: border-box; /* รวม padding ใน width */
 }

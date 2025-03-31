@@ -48,7 +48,9 @@ app.get('/api/equipment', async(req, res) => {
 
 // เริ่มต้นเซิร์ฟเวอร์ที่พอร์ต 8080
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    // console.log(`Server is running on http://localhost:${port}`);
+    app.listen(8080, () => console.log("Server running on port 8080"));
+
 });
 
 
