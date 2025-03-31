@@ -80,3 +80,94 @@ body {
     min-height: 100vh; /* Full screen height */
 }
 
+
+/* สไตล์สำหรับ Navigation Menu */
+.menu {
+    margin-top: 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.menu ul li button {
+    background-color: #1a237e;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);;
+}
+
+.menu ul li button i {
+    margin-right: 5px;
+}
+
+.menu ul li button:hover {
+    background-color: #1F2C3C; /* สีน้ำเงินเข้มขึ้นเมื่อ hover */
+}
+
+/* สไตล์ Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #2C3E50; /* สีตัวหนังสือในเมนู */
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+footer a {
+    display: inline-block; /* ทำให้ดูเหมือนปุ่ม */
+    background-color: #e3f2fd; /* สีน้ำเงินอ่อน */
+    color: #0d47a1; /* ตัวอักษรสีน้ำเงินเข้ม */
+    text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+    padding: 10px 20px; /* เพิ่มระยะภายในปุ่ม */
+    border: 1px solid #0d47a1; /* เส้นขอบสีน้ำเงินเข้ม */
+    border-radius: 8px; /* ทำขอบปุ่มมน */
+    margin: 5px; /* เว้นระยะห่างระหว่างปุ่ม */
+    font-family: 'Poppins', sans-serif; /* เปลี่ยนฟอนต์ */
+    font-size: 16px; /* ขนาดตัวอักษร */
+    transition: background-color 0.3s ease, color 0.3s ease; /* ทำเอฟเฟกต์เวลา hover */
+}
+
+footer a:hover {
+    background-color: #bbdefb; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+    color: #ffffff; /* ตัวอักษรสีขาว */
+}
+
+footer {
+    text-align: center; /* จัดให้อยู่ตรงกลาง */
+    margin-top: 20px; /* เพิ่มระยะห่างจากเนื้อหาด้านบน */
+}

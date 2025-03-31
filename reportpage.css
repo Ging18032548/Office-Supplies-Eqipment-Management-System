@@ -1,0 +1,171 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 90vh;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #003366;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #f9f9f9;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #003366;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #d9e4f5;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family:  'Poppins', sans-serif;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:nth-child(1) {
+    background-color: #ffcc00;
+    color: black;
+}
+
+button:nth-child(2) {
+    background-color: white;
+    color: black;
+}
+
+.btn {
+    
+    border: 2px solid #1a237e; /* เส้นขอบน้ำเงินเข้ม */
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #1a237e; /* พื้นหลังเปลี่ยนน้ำเงินเข้ม */
+    color: white; /* ตัวอักษรเปลี่ยนเป็นสีขาว */
+    transform: scale(1.05); /* ขยายขึ้นเล็กน้อย */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    background-color: #0d1b50; /* กดแล้วเป็นน้ำเงินเข้มขึ้น */
+    transform: scale(0.95);
+}
+
+a.btn.back-home {
+    display: inline-block;
+    padding: 12px 20px;
+    color: #6a5acd;
+    text-decoration: none;
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    padding: 12px 20px; /* ปรับ padding ด้านซ้าย-ขวา */
+    padding-left: 30px; /* เพิ่ม padding ซ้ายเพื่อให้ข้อความไม่ชิดเกินไป */
+    padding-right: 30px; /* ปรับให้สมดุล */
+}
+
+a.btn.back-home:hover {
+    background-color: #616161;
+    border-color: #616161;
+    color: white;
+    transform: scale(1.05);
+    border-radius: 20px;
+}
+
+/* ปุ่มเพิ่มผู้ใช้ */
+button.add {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+button.add:hover {
+    background-color: #45a049;
+}
+
+/* ปุ่มแก้ไขและลบ */
+button.edit, button.delete {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+button.edit:hover, button.delete:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* ช่องค้นหา */
+.search-box {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-box:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
