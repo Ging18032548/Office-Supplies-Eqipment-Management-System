@@ -10,6 +10,7 @@ body {
     align-items: center;
     min-height: 100vh; /* Full screen height */
     border-shadow: 100px;
+    margin-top: 100px;
 }
 
 /* Header Styles */
@@ -63,7 +64,7 @@ a:hover {
  
 p {
     color: #333;
-    font-size: 1.1em;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -148,18 +149,26 @@ body {
     display: block;
 }
 
+footer {
+    text-align: center; /* จัดให้อยู่ตรงกลาง */
+    margin-top: 180px; /* เพิ่มระยะห่างจากเนื้อหาด้านบน */
+    position: relative;
+    bottom: 160px; /* ย้าย footer ขึ้นมา 160px */
+}
+
 footer a {
     display: inline-block; /* ทำให้ดูเหมือนปุ่ม */
     background-color: #e3f2fd; /* สีน้ำเงินอ่อน */
     color: #0d47a1; /* ตัวอักษรสีน้ำเงินเข้ม */
     text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
     padding: 10px 20px; /* เพิ่มระยะภายในปุ่ม */
-    border: 1px solid #0d47a1; /* เส้นขอบสีน้ำเงินเข้ม */
-    border-radius: 8px; /* ทำขอบปุ่มมน */
+    border: 2px solid #0d47a1; /* เส้นขอบสีน้ำเงินเข้ม */
+    border-radius: 10px; /* ทำขอบปุ่มมน */
     margin: 5px; /* เว้นระยะห่างระหว่างปุ่ม */
     font-family: 'Poppins', sans-serif; /* เปลี่ยนฟอนต์ */
     font-size: 16px; /* ขนาดตัวอักษร */
     transition: background-color 0.3s ease, color 0.3s ease; /* ทำเอฟเฟกต์เวลา hover */
+    bottom: 160px;
 }
 
 footer a:hover {
@@ -167,7 +176,3 @@ footer a:hover {
     color: #ffffff; /* ตัวอักษรสีขาว */
 }
 
-footer {
-    text-align: center; /* จัดให้อยู่ตรงกลาง */
-    margin-top: 20px; /* เพิ่มระยะห่างจากเนื้อหาด้านบน */
-}

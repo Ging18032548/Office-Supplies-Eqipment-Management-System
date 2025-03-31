@@ -1,124 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;700&display=swap');
-
-/* ฟอนต์และการตั้งค่าพื้นฐาน */
+/* ตั้งค่าพื้นฐานสำหรับ body */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f9; /* พื้นหลังสีเทาอ่อน */
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* ให้พื้นที่เต็มหน้าจอ */
-    color: #333;
-}
-
-/* กรอบรวม (Content Box) ที่ใช้ flex เพื่อจัดวางส่วนหัว, ฟอร์ม, และส่วนลิงก์ */
-.content-box {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff; /* พื้นหลังสีขาว */
-    padding: 30px;
+    justify-content: center;  /* จัดเนื้อหาให้อยู่ตรงกลางแนวนอน */
+    align-items: center;      /* จัดเนื้อหาให้อยู่ตรงกลางแนวตั้ง */
+    height: 100vh;            /* ให้พื้นที่เต็มหน้าจอ */
+  }
+  
+  /* กรอบหลักสำหรับเนื้อหา */
+  .content-box {
+    background-color: #ffffff;
+    padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* กำหนดความกว้างสูงสุด */
+    max-width: 600px; /* ขนาดกรอบ */
     box-sizing: border-box;
-    min-height: 450px;  /* กำหนดความสูงขั้นต่ำเพื่อให้มีพื้นที่ในการจัดวาง */
-}
-
-/* ส่วนหัว */
-h2 {
+    text-align: center;  /* จัดให้ส่วนหัวและลิงก์อยู่ตรงกลาง */
+  }
+  
+  /* ส่วนหัวหลัก */
+  h2 {
     font-size: 28px;
     font-weight: 600;
-    color: #1e2a47; /* น้ำเงินเข้ม */
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* ฟอร์มเข้าสู่ระบบ */
-form {
-    background-color: #ffffff;
-    /* ไม่จำเป็นต้องมี margin-top เพราะ h2 อยู่ด้านบนแล้ว */
-    padding: 0; /* เราจัด spacing โดย h2 และ margin ที่กำหนดภายในฟอร์ม */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-label {
+    color: #1e2a47;
+    margin-bottom: 25px;
+  }
+  
+  /* สไตล์ฟอร์ม */
+  form {
+    text-align: left;  /* กำหนดให้ฟอร์มจัดชิดซ้ายเพื่อให้ label และ input เรียงชิดกัน */
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 8px;
     font-size: 16px;
     color: #1e2a47;
-    margin-bottom: 8px;
-    display: block;
     font-weight: 500;
-}
-
-input[type="text"],
-input[type="password"] {
+  }
+  
+  form input[type="text"],
+  form input[type="password"] {
     width: 100%;
-    padding: 10px 10px;
+    padding: 12px 16px;    /* เพิ่ม padding ให้ชิดขอบน้อยลง */
     margin-bottom: 20px;
     border: 2px solid #ddd;
     border-radius: 5px;
+    box-sizing: border-box;
     font-size: 16px;
     background-color: #f9f9f9;
     color: #333;
     font-family: 'Poppins', sans-serif;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
+  }
+  
+  form input[type="text"]:focus,
+  form input[type="password"]:focus {
     border-color: #1e2a47;
     box-shadow: 0 0 8px rgba(30, 42, 71, 0.2);
-}
-
-/* ปุ่ม Login */
-button[type="submit"] {
-    background-color: #000066;
-    color: white;
-    padding: 12px;
+  }
+  
+  form button[type="submit"] {
     width: 100%;
+    padding: 12px;
+    background-color: #000066;
+    color: #fff;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  form button[type="submit"]:hover {
     background-color: #333;
-}
-
-/* ส่วนลิงก์ด้านล่าง (Footer Section ภายใน .content-box) */
-.footer-section {
-    margin-top: auto;  /* ผลักส่วนนี้ไปที่ด้านล่างของ container */
+  }
+  
+  /* ลิงก์สำหรับสมัครสมาชิก */
+  .register-link {
+    font-size: 15px;    
+    margin-top: 20px;
+    padding: 0 20px;     /* เพิ่มระยะห่างด้านซ้ายและขวา ไม่ให้ชิดขอบ */
     text-align: center;
-}
-
-.register-link {
-    font-size: 15px;
-}
-
-
-.register-link a {
+  }
+  
+  .register-link a {
     color: #1e2a47;
     text-decoration: none;
-}
-
-.register-link a:hover {
+  }
+  
+  .register-link a:hover {
     text-decoration: underline;
-}
-
-.back-home {
+  }
+  
+  /* ลิงก์กลับหน้าแรก */
+  .back-home {
     display: block;
-    margin-top: 15px;
-    color: #3333997;
-    font-size: 15px;
+    margin: 15px auto 0 auto;  /* จัดให้อยู่กลางและเว้นด้านบน */
+    font-size: 16px;
+    color: #1a237e;
     text-decoration: none;
-}
-
-.back-home:hover {
+  }
+  
+  .back-home:hover {
     text-decoration: underline;
-}
+  }
+  

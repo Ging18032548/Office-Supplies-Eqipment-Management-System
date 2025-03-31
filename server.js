@@ -46,6 +46,16 @@ app.get('/api/equipment', async(req, res) => {
     });
   });
 
+
+// dashboard
+  app.get("/dashboard", (req, res) => {
+    db.query("SELECT * FROM dashboard_id LIMIT 1", (err, result) => {
+        if (err) return res.status(500).json({ success: false, message: err.message });
+        res.json({ success: true, data: result[0] });
+    });
+});
+
+
 // เริ่มต้นเซิร์ฟเวอร์ที่พอร์ต 8080
 app.listen(port, () => {
     // console.log(`Server is running on http://localhost:${port}`);

@@ -159,6 +159,7 @@ a.btn.back-home:hover {
     font-weight: bold;
     animation: fadeIn 0.5s ease-in-out;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     table, thead, tbody, th, td, tr {
