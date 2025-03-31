@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sukhumvit+Set:wght@300;400;500;700&display=swap');
+
 /* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
@@ -26,7 +29,7 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 20px 0 0;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 nav ul li {
@@ -38,11 +41,11 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    
+    font-size: 22px;
 }
 
 nav ul li a:hover {
-    color: #00509e;
+    color: #fff9c4;
 }
 
 /* Main Content Styling */
@@ -56,12 +59,15 @@ main {
 }
 
 section {
+    font-family: 'Poppins', sans-serif;
     margin-bottom: 40px;
 }
 
-section h2 {
-    font-size: 24px;
+#section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
     color: #003366;
+    font-size: 16px;
 }
 
 .stats {
@@ -79,32 +85,35 @@ section h2 {
 .stats .stat-item:hover {
     transform: scale(1.1); /* ขยายขนาดเมื่อเม้าชี้ไปที่ข้อมูล */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูเด่น */
-    background-color: #f0f8ff; /* เปลี่ยนสีพื้นหลัง */
+    background-color: #e7e9fd; /* เปลี่ยนสีพื้นหลัง */
 }
 .stat-item h3 {
     margin-bottom: 10px;
 }
 
+/* updateSettings */
 button {
+    font-family: 'Poppins', sans-serif;
     padding: 12px 20px;
-    background-color: #003366;
+    background-color: #7986cb;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 14px;
     cursor: pointer;
     font-size: 20px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #d0d9ff;
-    color: black;
+    background-color: #212121;
+    color: white;
+    transform: scale(1.05);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 table th, table td {
@@ -137,7 +146,8 @@ h2 {
     color: #003366;
 }
 h3{
-    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
     color: black;
 }
 /* ปรับแต่งปุ่ม "Back to Homepage" */
@@ -147,7 +157,7 @@ h3{
     color: #303f9f;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อมีการโต้ตอบ */
     display: inline-block;
     margin-bottom: 20px; /* ให้มีระยะห่างจากองค์ประกอบอื่น */
@@ -163,26 +173,47 @@ h3{
 
 }
 
-#updateSettingsBtn {
-    background-color: #2c3e50; /* สีพื้นหลังน้ำเงินเข้ม */
-    color: #ffffff; /* สีตัวอักษรขาว */
-    font-family: 'Poppins', sans-serif; /* ฟ้อนต์ */
-    font-size: 18px; /* ขนาดตัวอักษร */
-    padding: 12px 20px; /* ขนาดพื้นที่ปุ่ม */
-    border: none; /* ไม่มีเส้นขอบ */
-    border-radius: 8px; /* ขอบโค้งมน */
-    cursor: pointer; /* เปลี่ยนเมาส์เป็น pointer เมื่อโฮเวอร์ */
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+#settings {
+    font-family: 'Poppins', sans-serif;
 }
 
-#updateSettingsBtn:hover {
-    background-color: #1a252f; /* สีเข้มขึ้นเมื่อโฮเวอร์ */
-    transform: scale(1.05); /* ขยายขนาดเล็กน้อย */
+#settings h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #003366;
 }
 
-#updateSettingsBtn:active {
-    background-color: #34495e; /* สีเมื่อกด */
-    transform: scale(0.98); /* กดแล้วหดลงเล็กน้อย */
+#updateSettings {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #003366;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+#updateMessage {
+    display: none; /* เริ่มต้นซ่อนข้อความ */
+    color: green; /* สีข้อความ */
+    background-color: #d4edda; /* สีพื้นหลังเขียวอ่อน */
+    border: 1px solid #c3e6cb; /* ขอบสีเขียวอ่อน */
+    border-radius: 5px; /* มุมโค้ง */
+    padding: 10px 20px; /* ระยะห่างภายใน */
+    font-size: 16px; /* ขนาดฟอนต์ */
+    font-weight: bold; /* ฟอนต์หนา */
+    margin-top: 10px; /* เว้นระยะจากส่วนบน */
+    text-align: center; /* จัดกึ่งกลางข้อความ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงา */
+    transition: opacity 0.3s ease-in-out; /* การเปลี่ยนแปลงความโปร่งใส */
+}
+
+#updateMessage.show {
+    display: block; /* แสดงข้อความ */
+    opacity: 1; /* ทำให้ข้อความไม่โปร่งใส */
 }
 
 /* Responsive */

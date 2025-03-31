@@ -9,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- เพิ่มฟอนต์ Poppins -->
     <link rel="stylesheet" href="maintenancepage.css">
 </head>
+
 <body>
     <div class="main-container">
         <div class="content-box">
             <a href="webpage.html" class="btn back-home">Back to Homepage</a>
+            
             <h2>Maintenance Records</h2>
 
             <button id="addBtn" class="btn add">Add Maintenance ID</button>
@@ -22,11 +24,12 @@
             </div>
 
             <!-- delete edit -->
-            <button class="edit-btn" data-id="${user.id}">Edit</button>
-            <button class="delete-btn" data-id="${user.id}">Delete</button>
+            <!-- <button class="edit-btn" data-id="${user.id}">Edit</button>
+            <button class="delete-btn" data-id="${user.id}">Delete</button> -->
             
             <p><input type="text" id="search" class="search-box" placeholder="🔍 search">
             </p>
+
             <table id="maintenance-table">
                 <thead>
                     <tr>
@@ -44,34 +47,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            axios.get('http://localhost:8080/api.php?table=maintenance')
-                .then(function(response) {
-                    const maintenanceData = response.data;
-                    const maintenanceTableBody = document.getElementById('maintenance');
-                    if (maintenanceData.length === 0) {
-                        maintenanceTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No data available</td></tr>';
-                    } else {
-                        maintenanceData.forEach(function(record) {
-                            const row = document.createElement('tr');
-                            row.innerHTML = `
-                                <td>${record.maintenance_id}</td>
-                                <td>${record.equipment_id}</td>
-                                <td>${record.maintenance_date}</td>
-                                <td>${record.description}</td>
-                                <td>${record.repairStatus}</td>
-                                <td>${record.cost}</td>
-                            `;
-                            maintenanceTableBody.appendChild(row);
-                        });
-                        document.getElementById('infoMessage').style.display = 'block';
-                    }
-                })
-                .catch(function(error) {
-                    console.error("Error fetching data: ", error);
-                });
-        });
-    </script>
+    <script src="maintenance.js"></script>
 </body>
 </html>

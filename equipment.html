@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="equipmentpage.css">
 </head>
+
 <body>
     <div class="main-container">
         <div class="content-box">
             <a href="webpage.html" class="btn back-home" onclick="goBack()">Back to Homepage</a> <!-- ใช้ goBack() กับปุ่ม -->
+            
             <h2>Equipment List</h2>
 
             <button id="addBtn" class="btn add">Add Equipment ID</button>
@@ -20,13 +22,13 @@
             </div>
 
             <!-- delete edit -->
-            <button class="edit-btn" data-id="${user.id}">Edit</button>
-            <button class="delete-btn" data-id="${user.id}">Delete</button>
+            <!-- <button class="edit-btn" data-id="${user.id}">Edit</button>
+            <button class="delete-btn" data-id="${user.id}">Delete</button> -->
 
             <input type="text" id="search" class="search-box" placeholder="🔍 search">
 
             <!-- Table to display equipment data -->
-            <table id="equipment">
+            <table id="equipment-table">
                 <thead>
                     <tr>
                         <th>Equipment ID</th>
@@ -40,57 +42,12 @@
                         <th>Description</th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
-                    <!-- Data rows will be inserted here -->
-                </tbody>
+                <tbody id="equipment"></tbody>
             </table>
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        fetch("http://localhost:8080/api/equipment")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                let tableBody = document.getElementById("table-body");
-                tableBody.innerHTML = ""; // เคลียร์ข้อมูลเก่า
-
-                if (data.length > 0) {
-                    data.forEach(row => {
-                        let rowData = document.createElement("tr"); // สร้างแถวใหม่
-                        Object.values(row).forEach(value => {
-                            let cell = document.createElement("td");  // สร้างเซลล์
-                            cell.textContent = value;  // กำหนดข้อมูลในเซลล์
-                            rowData.appendChild(cell);  // เพิ่มเซลล์ในแถว
-                        });
-                        tableBody.appendChild(rowData);  // เพิ่มแถวในตาราง
-                    });
-                } else {
-                    let noDataRow = document.createElement("tr");  // สร้างแถวใหม่สำหรับข้อความ "No data"
-                    let noDataCell = document.createElement("td");  // สร้างเซลล์
-                    noDataCell.colSpan = 9;  // กำหนดจำนวนคอลัมน์ที่ข้ามไป
-                    noDataCell.textContent = "No data available";  // ข้อความที่จะแสดง
-                    noDataRow.appendChild(noDataCell);  // เพิ่มเซลล์ในแถว
-                    tableBody.appendChild(noDataRow);  // เพิ่มแถวในตาราง
-                }
-            })
-            .catch(error => {
-                console.error("Error loading equipment data:", error);
-                document.getElementById("table-body").innerHTML = 
-                    "<tr><td colspan='9' style='color:red;'>Failed to load data</td></tr>";
-            });
-    });
-
-    </script>
-
-    <!-- Axios script -->
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <!-- <script src="equipment.js"></script>  -->
+    <script src="equipment.js"></script> 
     <!-- ใช้ JavaScript แยกไฟล์ -->
 </body>
 </html>
