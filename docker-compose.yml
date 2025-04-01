@@ -7,7 +7,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: newdb   # ใช้ชื่อฐานข้อมูลใหม่
     ports:
-      - "8880:3306"  # พอร์ตที่แมป
+      # - "8880:3306"  # พอร์ตที่แมป
+      - "8881:3306" # Change 8880 to 8881
+
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # ใช้ไฟล์ init.sql เพื่อสร้างฐานข้อมูลและตารางใหม่

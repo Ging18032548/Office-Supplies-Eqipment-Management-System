@@ -1,61 +1,188 @@
-// const mysql = require("mysql2");
+const express = require('express');
+const cors = require('cors'); 
+// const db = require('./db');
+const mysql = require('mysql2/promise');
+const app = express();
 
-// const connection = mysql.createConnection({
-//     host: 'localhost', // หรือ IP ของ container MySQL
-//     user: 'root', // ชื่อผู้ใช้ฐานข้อมูล
-//     password: 'password', // รหัสผ่านฐานข้อมูล
-//     database: 'webmanagement' // ชื่อฐานข้อมูล
-// });
+app.use(express.json());
+app.use(cors());
 
-// connection.connect((err) => {
-//     if (err) {
-//         console.error("Error connecting to the database: ", err);
-//         return;
-//     }
-//     console.log("Connected to the database!");
-// });
-
-// module.exports = connection;
-
-
-// ใช้ require เพื่อเชื่อมต่อกับ db.js
-const db = require('./server/db');
-
-// การเชื่อมต่อกับฐานข้อมูลสามารถใช้จากที่นี่
-// ตัวอย่างการ query ข้อมูลจากฐานข้อมูล
-db.query('SELECT * FROM equipment', (err, rows) => {
-    if (err) {
-        console.error('Error fetching data: ', err);
-    } else {
-        console.log('Equipment data: ', rows);
+// equipment
+app.get('/equipment', async (req, res) => {
+    try {
+        const [rows] = await db.execute('SELECT * FROM equipment');
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching equipment: ' + err.message });
     }
 });
 
-const axios = require('axios');
+app.post('/equipment', async (req, res) => {
+    const { name, category, status } = req.body;
+    try {
+        const sql = "INSERT INTO equipment (name, category, status) VALUES (?, ?, ?)";
+        const [result] = await db.execute(sql, [name, category, status]);
+        res.json({ message: "Equipment added successfully!", id: result.insertId });
+    } catch (err) {
+        res.status(500).json({ error: 'Error adding equipment: ' + err.message });
+    }
+});
 
-// URL ของ API ที่รันในเซิร์ฟเวอร์
-const apiUrl = 'http://localhost:8880/equipment';
+app.put('/equipment/:id', async (req, res) => {
+    const { name, category, status } = req.body;
+    try {
+        const sql = "UPDATE equipment SET name=?, category=?, status=? WHERE id=?";
+        await db.execute(sql, [name, category, status, req.params.id]);
+        res.json({ message: "Equipment updated successfully!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error updating equipment: ' + err.message });
+    }
+});
 
-// การดึงข้อมูลจาก API
-axios.get(apiUrl)
-  .then(response => {
-    console.log('Equipment data:', response.data);  // ข้อมูลจาก API
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+app.delete('/equipment/:id', async (req, res) => {
+    try {
+        const sql = "DELETE FROM equipment WHERE id=?";
+        await db.execute(sql, [req.params.id]);
+        res.json({ message: "Equipment deleted successfully!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error deleting equipment: ' + err.message });
+    }
+});
 
-// ตัวอย่างการเพิ่มข้อมูลใหม่ไปยังฐานข้อมูลผ่าน API
-const newEquipment = {
-  name: 'New Equipment',
-  category: 'Category A',
-  status: 'Available'
-};
+// borrow_records
+app.get('/borrow_records', async (req, res) => {
+    try {
+        const [rows] = await db.execute('SELECT * FROM borrow_records');
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching borrow records: ' + err.message });
+    }
+});
 
-axios.post(apiUrl, newEquipment)
-  .then(response => {
-    console.log('Added new equipment:', response.data);
-  })
-  .catch(error => {
-    console.error('Error adding equipment:', error);
-  });
+app.post('/borrow_records', async (req, res) => {
+    const { user_id, equipment_id, borrow_date, return_date, status } = req.body;
+    try {
+        const sql = "INSERT INTO borrow_records (user_id, equipment_id, borrow_date, return_date, status) VALUES (?, ?, ?, ?, ?)";
+        const [result] = await db.execute(sql, [user_id, equipment_id, borrow_date, return_date, status]);
+        res.json({ message: "Borrow record added!", id: result.insertId });
+    } catch (err) {
+        res.status(500).json({ error: 'Error adding borrow record: ' + err.message });
+    }
+});
+
+app.put('/borrow_records/:id', async (req, res) => {
+    const { user_id, equipment_id, borrow_date, return_date, status } = req.body;
+    try {
+        const sql = "UPDATE borrow_records SET user_id=?, equipment_id=?, borrow_date=?, return_date=?, status=? WHERE id=?";
+        await db.execute(sql, [user_id, equipment_id, borrow_date, return_date, status, req.params.id]);
+        res.json({ message: "Borrow record updated!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error updating borrow record: ' + err.message });
+    }
+});
+
+app.delete('/borrow_records/:id', async (req, res) => {
+    try {
+        const sql = "DELETE FROM borrow_records WHERE id=?";
+        await db.execute(sql, [req.params.id]);
+        res.json({ message: "Borrow record deleted!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error deleting borrow record: ' + err.message });
+    }
+});
+
+// maintenance
+app.get('/maintenance', async (req, res) => {
+    try {
+        const [rows] = await db.execute('SELECT * FROM maintenance');
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching maintenance records: ' + err.message });
+    }
+});
+
+app.post('/maintenance', async (req, res) => {
+    const { equipment_id, maintenance_date, description, repair, cost } = req.body;
+    try {
+        const sql = "INSERT INTO maintenance (equipment_id, maintenance_date, description, repair, cost) VALUES (?, ?, ?, ?, ?)";
+        const [result] = await db.execute(sql, [equipment_id, maintenance_date, description, repair, cost]);
+        res.json({ message: "Maintenance record added!", id: result.insertId });
+    } catch (err) {
+        res.status(500).json({ error: 'Error adding maintenance record: ' + err.message });
+    }
+});
+
+app.put('/maintenance/:id', async (req, res) => {
+    const { equipment_id, maintenance_date, description, repair, cost } = req.body;
+    try {
+        const sql = "UPDATE maintenance SET equipment_id=?, maintenance_date=?, description=?, repair=?, cost=? WHERE id=?";
+        await db.execute(sql, [equipment_id, maintenance_date, description, repair, cost, req.params.id]);
+        res.json({ message: "Maintenance record updated!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error updating maintenance record: ' + err.message });
+    }
+});
+
+app.delete('/maintenance/:id', async (req, res) => {
+    try {
+        const sql = "DELETE FROM maintenance WHERE id=?";
+        await db.execute(sql, [req.params.id]);
+        res.json({ message: "Maintenance record deleted!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error deleting maintenance record: ' + err.message });
+    }
+});
+
+//  user
+app.get('/users', async (req, res) => {
+    try {
+        const [rows] = await db.execute(
+            'SELECT id, username, firstname, lastname, email, phone, department, role FROM user'
+        );
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching users: ' + err.message });
+    }
+});
+
+app.post('/users', async (req, res) => {
+    const { username, password, role } = req.body;
+    try {
+        const sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+        const [result] = await db.execute(sql, [username, password, role]);
+        res.json({ message: "User added!", id: result.insertId });
+    } catch (err) {
+        res.status(500).json({ error: 'Error adding user: ' + err.message });
+    }
+});
+
+app.put('/users/:id', async (req, res) => {
+    const { username, password, role } = req.body;
+    try {
+        const sql = "UPDATE users SET username=?, password=?, role=? WHERE id=?";
+        await db.execute(sql, [username, password, role, req.params.id]);
+        res.json({ message: "User updated!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error updating user: ' + err.message });
+    }
+});
+
+app.delete('/users/:id', async (req, res) => {
+    try {
+        const sql = "DELETE FROM users WHERE id=?";
+        await db.execute(sql, [req.params.id]);
+        res.json({ message: "User deleted!" });
+    } catch (err) {
+        res.status(500).json({ error: 'Error deleting user: ' + err.message });
+    }
+});
+
+// เปิด Server บน Port 8880
+// app.listen(8880, () => {
+//     console.log('✅ Server is running on http://localhost:8880');
+// });
+
+const PORT = 8880; // Change to a different port, e.g., 8881 or 3000
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
