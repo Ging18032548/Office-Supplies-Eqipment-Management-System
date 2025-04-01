@@ -204,3 +204,75 @@ a.btn.back-home:hover {
         padding: 10px 15px;
     }
 }
+
+/* สไตล์ของแถบเมนู */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* ซ่อนแถบเมนูไว้ทางซ้าย */
+    width: 250px;
+    height: 100vh;
+    color: black;
+    transition: left 0.3s ease; /* ทำให้การแสดงผลของแถบเมนูเป็นไปอย่างนุ่มนวล */
+    z-index: 1000; /* ทำให้แถบเมนูอยู่เหนือเนื้อหา */
+    font-family: 'Poppins', sans-serif;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    padding: 20px;
+}
+
+.slide-menu ul {
+    list-style-type: none;
+    padding: 15px;
+}
+
+.slide-menu li {
+    margin-bottom: 15px;
+}
+
+.slide-menu a {
+    display: block;
+    text-decoration: none; /* Remove underline */
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease; /* Hover effect */
+    color: black;
+    background-color: #e1f5fe; /* Light blue */
+    position: center;
+}
+
+.slide-menu a:hover {
+    background-color: #bdbdbd; /* Light blue on hover */
+    color: white; /* White text on hover */
+}
+
+/* ปุ่มเปิด/ปิดเมนู */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    z-index: 1050; /* ทำให้ปุ่มอยู่เหนือเมนู */
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-toggle:hover {
+    background-color: #1a237e;
+    color: white;
+    transform: scale(1.05);
+}
+/* เมื่อคลิกที่ปุ่ม, แถบเมนูจะเลื่อนเข้ามา */
+.slide-menu.active {
+    left: 0;
+}
+
+.menu-toggle.hidden {
+    display: none; /* ซ่อนปุ่มเมนู */
+}
+

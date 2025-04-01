@@ -258,4 +258,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-    
+
+// Fetch data from the backend API and display it
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:8080/api/data');
+        const data = await response.json();
+        const container = document.getElementById('data-container');
+        container.innerHTML = data.map(item => `<p>${item.name}: ${item.quantity}</p>`).join('');
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Call fetchData when the page loads
+fetchData();
+
+// Redirect to the specified page 
+function goToPage(page) {
+    window.location.href = page; // Redirect to the specified page
+}
+

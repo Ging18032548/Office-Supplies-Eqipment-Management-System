@@ -219,3 +219,71 @@ button.edit:hover, button.btn.add:hover, button.edit-btn:hover, button.delete-bt
     transform: scale(1.05); /* ทำให้ปุ่มขยายขนาดเล็กน้อยเมื่อเมาส์ชี้ */
     color: white; /* ข้อความสีขาว */
 }
+
+/* สไตล์ของแถบเมนู */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* ซ่อนแถบเมนูไว้ทางซ้าย */
+    width: 250px;
+    height: 100%;
+    color: black;
+    transition: left 0.3s ease; /* ทำให้การแสดงผลของแถบเมนูเป็นไปอย่างนุ่มนวล */
+    z-index: 1000; /* ทำให้แถบเมนูอยู่เหนือเนื้อหา */
+    font-family: 'Poppins', sans-serif;
+}
+
+.slide-menu ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.slide-menu li {
+    margin-bottom: 10px;
+}
+
+.slide-menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    display: block;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #e1f5fe;
+}
+
+.slide-menu a:hover {
+    background-color: #444;
+    color: white;
+}
+
+/* ปุ่มเปิด/ปิดเมนู */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    z-index: 1050; /* ทำให้ปุ่มอยู่เหนือเมนู */
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-toggle:hover {
+    background-color: #1a237e;
+    color: white;
+    transform: scale(1.05);
+}
+/* เมื่อคลิกที่ปุ่ม, แถบเมนูจะเลื่อนเข้ามา */
+.slide-menu.active {
+    left: 0;
+}
+
+.menu-toggle.hidden {
+    display: none; /* ซ่อนปุ่มเมนู */
+}
+

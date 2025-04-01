@@ -17,7 +17,7 @@ body {
 
 /* คอนเทนเนอร์หลัก */
 .main-container {
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     background: white;
     padding: 30px;
@@ -44,7 +44,6 @@ h2 {
 label {
     display: block;
     margin-top: 10px;
-    font-weight: bold;
 }
 
 input[type="text"],
@@ -98,3 +97,49 @@ button:hover {
 .btn.back-home:hover {
     background-color: #424242;
 }
+
+button {
+    background-color: #91a7ff; 
+    color: #1a237e; 
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:  0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #1a237e; /* เปลี่ยนสีเมื่อโฮเวอร์ */
+    color: white; 
+}
+
+button:active {
+    background-color: #1e7e34; /* เปลี่ยนสีเมื่อคลิก */
+    transform: scale(1.05);
+}
+
+/* ปุ่ม Logout */
+.logout-btn {
+    display: block; /* ให้ปุ่มอยู่แถวเดียว */
+    padding: 10px 20px;
+    background-color: #e74c3c; /* สีแดง */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:  0.3s ease, transform 0.2s ease;
+    margin-top: 10px; /* ขยับลงมาจากข้อความ */
+    text-align: center;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b; /* เปลี่ยนสีเมื่อ hover */
+    transform: scale(1.05); /* ทำให้ปุ่มขยายเล็กน้อยเมื่อชี้ */
+}
+
+.logout-btn:active {
+    transform: scale(0.95); /* ทำให้ปุ่มหดลงเล็กน้อยเมื่อกด */
+}
+

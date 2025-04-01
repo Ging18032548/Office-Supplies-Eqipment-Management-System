@@ -1,68 +1,107 @@
 const express = require('express');
-const mysql = require('mysql2');
-
+const mysql = require('mysql');
 const app = express();
-const port = 8080; // ใช้พอร์ต 8080
+const PORT = 8080;
 
-// สร้างการเชื่อมต่อกับฐานข้อมูล MySQL (โค้ดจาก db.js)
+// Setup database connection
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',  // เปลี่ยนเป็นรหัสผ่านจริงของ MySQL
-    database: 'webdb'      // เปลี่ยนชื่อฐานข้อมูลให้ตรงกับที่สร้างใน MySQL
+    password: '', // Use your MySQL password
+    database: 'webdb', // Use your database name
 });
 
-// เชื่อมต่อกับฐานข้อมูล
 db.connect((err) => {
     if (err) {
-        console.error("Error connecting to the database:", err);
+        console.error('Database connection failed:', err.stack);
         return;
     }
-    console.log("Connected to the database!");
+    console.log('Connected to database');
 });
 
-// สร้าง API สำหรับดึงข้อมูลจากตาราง borrow_record
-app.get('/api/borrow_records', async (req, res) => {
-    db.query('SELECT * FROM borrow_record', (err, results) => {
+// Example route to fetch data
+app.get('/api/data', (req, res) => {
+    const sql = 'SELECT * FROM your_table_name'; // Replace with your table name
+    db.query(sql, (err, results) => {
         if (err) {
-            res.status(500).send({ error: 'Database error' });
-            return;
+            res.status(500).send('Database query failed');
+            throw err;
         }
-        res.json(results);  // ส่งข้อมูลเป็น JSON
+        res.json(results); // Return data as JSON
     });
 });
 
-
-// API ที่ดึงข้อมูลจากตาราง 'equipment'
-app.get('/api/equipment', async(req, res) => {
-    const query = 'SELECT * FROM equipment';
-    
-    db.query(query, (err, results) => {
-      if (err) {
-        res.status(500).send({ error: 'Database error' });
-        return;
-      }
-      res.json(results);  // ส่งข้อมูลเป็น JSON
-    });
-  });
-
-
-// dashboard
-  app.get("/dashboard", (req, res) => {
-    db.query("SELECT * FROM dashboard_id LIMIT 1", (err, result) => {
-        if (err) return res.status(500).json({ success: false, message: err.message });
-        res.json({ success: true, data: result[0] });
-    });
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+// last update: 2021-09-29
+// const express = require('express');
+// const mysql = require('mysql2');
+// const cors = require('cors');
 
-// เริ่มต้นเซิร์ฟเวอร์ที่พอร์ต 8080
-app.listen(port, () => {
-    // console.log(`Server is running on http://localhost:${port}`);
-    app.listen(8080, () => console.log("Server running on port 8080"));
+// const app = express();
+// const port = 8880; // ใช้พอร์ต 8880
 
-});
+// app.use(cors());
+// app.use(express.json());
 
+// // สร้างการเชื่อมต่อกับฐานข้อมูล MySQL
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',  // เปลี่ยนเป็นรหัสผ่านจริงของ MySQL
+//     database: 'webdb'      // เปลี่ยนชื่อฐานข้อมูลให้ตรงกับที่สร้างใน MySQL
+// });
+
+// // เชื่อมต่อกับฐานข้อมูล
+// db.connect((err) => {
+//     if (err) {
+//         console.error("Error connecting to the database:", err);
+//         return;
+//     }
+//     console.log("Connected to the database!");
+// });
+
+// // เส้นทางสำหรับหน้าแรก
+// app.get('/', (req, res) => {
+//     res.send('Welcome to the server!');
+// });
+
+// // สร้าง API สำหรับดึงข้อมูลจากตาราง borrow_record
+// app.get('/api/borrow_records', async (req, res) => {
+//     try {
+//         const [results] = await db.promise().query('SELECT * FROM borrow_record');
+//         res.json(results);  // ส่งข้อมูลเป็น JSON
+//     } catch (err) {
+//         res.status(500).send({ error: 'Database error' });
+//     }
+// });
+
+// // API ที่ดึงข้อมูลจากตาราง 'equipment'
+// app.get('/api/equipment', async (req, res) => {
+//     try {
+//         const [results] = await db.promise().query('SELECT * FROM equipment');
+//         res.json(results);  // ส่งข้อมูลเป็น JSON
+//     } catch (err) {
+//         res.status(500).send({ error: 'Database error' });
+//     }
+// });
+
+// // Dashboard
+// app.get("/dashboard", async (req, res) => {
+//     try {
+//         const [result] = await db.promise().query("SELECT * FROM dashboard_id LIMIT 1");
+//         res.json({ success: true, data: result[0] });
+//     } catch (err) {
+//         res.status(500).json({ success: false, message: err.message });
+//     }
+// });
+
+// // เริ่มต้นเซิร์ฟเวอร์ที่พอร์ต 8880
+// app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+// });
 
 
 // const express = require('express');

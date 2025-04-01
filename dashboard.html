@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="dashboardpage.css"> <!-- เชื่อมกับ CSS -->
 </head>
 <body>
+    <button class="menu-toggle" id="menuButton" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="sidebar" class="slide-menu">
+        <ul>
+            <li><a href="equipment.html">Equipment</a></li>
+            <li><a href="maintenance.html">Maintenance</a></li>
+            <li><a href="borrow.html">Borrow Records</a></li>
+            <li><a href="user.html">User Directory</a></li>
+            <li><a href="report.html">Reports</a></li>
+            <li><a href="setting.html">Settings</a></li>
+            <li><a href="webpage.html">Back to Homepage</a></li>
+        </ul>
+    </nav>
+
     <div class="main-container">
         <div class="content-box">
             <a href="webpage.html" class="btn back-home" onclick="goBack()">Back to Homepage</a> <!-- ใช้ goBack() กับปุ่ม -->

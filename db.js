@@ -58,13 +58,6 @@
 
 
 
-
-
-
-
-
-
-
 // const mysql = require("mysql2");
 // const db = require('./webdb'); // Ensure this path is correct
 

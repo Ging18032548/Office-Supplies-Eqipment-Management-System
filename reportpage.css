@@ -175,7 +175,6 @@ button.edit:hover, button.btn.add:hover, button.edit-btn:hover, button.delete-bt
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-
 /* ปุ่ม add report */
 #addReportBtn {
     background-color: white; 
@@ -193,4 +192,79 @@ button.edit:hover, button.btn.add:hover, button.edit-btn:hover, button.delete-bt
     background-color: #424242; /* สีพื้นหลังเปลี่ยนเป็นสีเทาเข้ม */
     transform: scale(1.05); /* ทำให้ปุ่มขยายขนาดเล็กน้อยเมื่อเมาส์ชี้ */
     color: white; /* ข้อความสีขาว */
+}
+
+/* สไตล์ของแถบเมนู */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* ซ่อนแถบเมนูไว้ทางซ้าย */
+    width: 250px;
+    height: 100%;
+    color: black;
+    transition: left 0.3s ease; /* ทำให้การแสดงผลของแถบเมนูเป็นไปอย่างนุ่มนวล */
+    z-index: 1000; /* ทำให้แถบเมนูอยู่เหนือเนื้อหา */
+    font-family: 'Poppins', sans-serif;
+    bqckground-color: #f0f4f8;
+}
+
+.slide-menu ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+.slide-menu li {
+    margin-bottom: 10px;
+}
+
+.slide-menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    display: block;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #e1f5fe;
+}
+
+.slide-menu hover {
+    background-color: black;
+    color: white;
+}
+
+.slide-menu a:hover {
+    background-color: #bdbdbd; /* Light blue on hover */
+    color: white; /* White text on hover */
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #add8e6, #87ceeb); /* Light blue gradient */
+    color: #ffffff; /* White text */;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    z-index: 1050;
+    transition: 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-toggle:hover {
+    background-color: #616161;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* เมื่อคลิกที่ปุ่ม, แถบเมนูจะเลื่อนเข้ามา */
+.slide-menu.active {
+    left: 0;
+}
+
+.menu-toggle.hidden {
+    display: none; /* ซ่อนปุ่มเมนู */
 }

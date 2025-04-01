@@ -11,6 +11,9 @@ body {
     min-height: 100vh; /* Full screen height */
     border-shadow: 100px;
     margin-top: 100px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Light abstract tones */
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
 }
 
 /* Header Styles */
